@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <button type="button" name="create">Create</button>
+</div>
+
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+       let $document = $(document);
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl('/game-hub')
+            .configureLogging(signalR.LogLevel.Information)
+            .build();
+
+        connection.start().then(response => {
+
+            connection.on('created', (gameId, person) => {
+                debugger
+            });
+
+            connection.on('ReceiveMessage', (userId, cmd) => {
+
+                alert(0)
+            });
+
+            
+
+            //connection
+            //    .invoke('Join', gameId)
+            //    .then(response =>{
+
+            //        connection.invoke('SendMessage', gameId, userId, cmd);
+            //    })
+            //    .catch(error => { console.log(error); });
+
+
+
+        }).catch(error => { console.log(error); });
+
+        $document.on('click', 'button[name="create"]', () => {
+
+            connection
+                .invoke('create')
+                .catch(error => { console.log(error); });
+        });
+    </script>
+}
