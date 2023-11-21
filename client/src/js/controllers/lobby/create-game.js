@@ -2,11 +2,15 @@ angular.module("app.controllers").controller("lobbyCreateGameController", [
   "$q",
   "$state",
   "$scope",
-  "$lobbyApi",
-  ($q, $state, $scope, $lobbyApi) => {
+  "$api",
+  ($q, $state, $scope, $api) => {
     $scope.createGame = () => {
-      $lobbyApi.createGame().then((response) => {
-        $state.go("lobby/game", { id: 123 });
+      let lobby = $api.lobby();
+
+      lobby.then((response) => {
+        let json = response.data;
+
+        $state.go("lobby/game", { id: json.id });
       });
     };
 

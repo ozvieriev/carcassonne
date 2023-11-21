@@ -1,12 +1,12 @@
+using Carcassonne.Server.Api.Services;
 using Carcassonne.Server.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IGameService, GameService>();
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSignalR();
 
 var app = builder.Build();
@@ -20,12 +20,17 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
-app.MapRazorPages();
+app.MapControllers();
 app.MapHub<GameHub>("/game-hub");
+
+app.UseCors(builder =>
+{
+    builder
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+});
 
 app.Run();
