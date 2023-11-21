@@ -4,7 +4,7 @@
 
 /.vs
 /.suo
-/bin
-/obj
+bin
+obj
 /FileContentIndex
 *.suo
