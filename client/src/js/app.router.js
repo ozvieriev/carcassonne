@@ -49,6 +49,7 @@ angular.module('app')
         _state({ url: 'account/sign-up', controller: 'accountSignUp' });
 
         _state({ url: 'lobby/create-game', controller: 'lobbyCreateGame' });
+        _state({ name: 'lobby/game', url: 'lobby/game/:id', controller: 'lobbyCreateGame', params: { id: null }, templateUrl: 'views/lobby/game.html', });
         
         _state({ url: 'learning/nutrition-cancer-related-fatigue', isProtected: true });
         _state({ url: 'learning/overview', isProtected: true });
