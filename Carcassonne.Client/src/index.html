@@ -2,39 +2,41 @@
 <html style="height: auto; min-height: 100%;overflow: auto" data-ng-app="app">
 
 <head>
-  <base href="/">
+    <base href="/">
 
-  <meta charset="utf-8" />
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <link rel="stylesheet" href="css/vendor.min.css" />
-  <link rel="stylesheet" href="css/app.min.css" />
+    <link rel="stylesheet" href="css/vendor.min.css" />
+    <link rel="stylesheet" href="css/app.min.css" />
 
-  <style type="text/css">
-    [ng-cloak],
-    [data-ng-cloak] {
-      visibility: hidden !important;
-    }
+    <style type="text/css">
+        [ng-cloak],
+        [data-ng-cloak] {
+            visibility: hidden !important;
+        }
 
-    .ng-hide {
-      display: none !important;
-    }
+        .ng-hide {
+            display: none !important;
+        }
 
-    .ng-show {
-      display: block !important;
-    }
-  </style>
+        .ng-show {
+            display: block !important;
+        }
+    </style>
 
-  <title></title>
+    <title></title>
 </head>
 
 <body data-ng-cloak>
-  <header data-ui-view="header"></header>
-  <main data-ui-view="main" role="main" class="container"></main>
-  <footer data-ui-view="footer" class="footer"></footer>
+    <header data-ui-view="header"></header>
+    <main data-ui-view="main" role="main" class="container"></main>
+    <footer data-ui-view="footer" class="footer"></footer>
 
-  <script src="js/vendor.min.js"></script>
-  <script src="js/app.min.js"></script>
+    <script src="js/vendor.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.min.js" integrity="sha512-UCd2sYwLBKzQ/kMciPoz3unDxlIqYDH/Av525wcK6GRXOO0XekfvVhv+7me7mDO4BoypCLtCBxx+ciTQkEB4HA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="js/app.min.js"></script>
 </body>
 
 </html>

@@ -1,31 +1,36 @@
 ﻿using Carcassonne.Server.Api.Models;
+using CSharpVitamins;
 using System.Collections.Concurrent;
 
 namespace Carcassonne.Server.Api.Services
 {
     public interface IGameService
     {
-        public GameModel Create();
+        GameModel Create();
 
-        public GameModel Get(Guid id);
-    
-        public void Delete(Guid id);
+        GameModel Get(string id);
+
+        void Delete(string id);
+
+        GameModel AddUser(GameModel game, string user);
+
+        bool ContainsUser(GameModel game, string user);
     }
 
     public class GameService : IGameService
     {
-        private readonly ConcurrentDictionary<Guid, GameModel> _games;
+        private readonly ConcurrentDictionary<string, GameModel> _games;
 
         public GameService()
         {
-            _games = new ConcurrentDictionary<Guid, GameModel>();
-         }
+            _games = new ConcurrentDictionary<string, GameModel>(StringComparer.InvariantCultureIgnoreCase);
+        }
 
         public GameModel Create()
         {
             var game = new GameModel
             {
-                Id = Guid.NewGuid()
+                Id = (ShortGuid)Guid.NewGuid()
             };
 
             if (_games.TryAdd(game.Id, game))
@@ -34,18 +39,22 @@ namespace Carcassonne.Server.Api.Services
             return game;
         }
 
-        public GameModel Get(Guid id)
+        public GameModel Get(string id)
         {
-            if(_games.TryGetValue(id, out var game))
+            if (_games.TryGetValue(id, out var game))
                 return game;
 
             return default;
         }
 
-        public void Delete(Guid id)
+        public void Delete(string id)
         {
             if (_games.TryRemove(id, out var game))
             { }
         }
+
+        public GameModel AddUser(GameModel game, string user) => game.AddUser(user);
+
+        public bool ContainsUser(GameModel game, string user) => game.ContainsUser(user);
     }
 }

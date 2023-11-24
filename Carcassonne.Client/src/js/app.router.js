@@ -48,8 +48,8 @@ angular.module('app')
         _state({ url: 'account/sign-in', controller: 'accountSignIn', params: { returnUrl: null } });
         _state({ url: 'account/sign-up', controller: 'accountSignUp' });
 
-        _state({ url: 'lobby/create-game', controller: 'lobbyCreateGame' });
-        _state({ name: 'lobby/game', url: 'lobby/game/:id', controller: 'lobbyCreateGame', params: { id: null }, templateUrl: 'views/lobby/game.html', });
+        _state({ url: 'game/lobby', controller: 'lobby' });
+        _state({ name: 'game', url: 'game/:id', controller: 'game', params: { id: null }, templateUrl: 'views/game/game.html', });
         
         _state({ url: 'learning/nutrition-cancer-related-fatigue', isProtected: true });
         _state({ url: 'learning/overview', isProtected: true });

@@ -25,7 +25,7 @@ namespace Carcassonne.Server.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult Get(Guid id)
+        public ActionResult Get(string id)
         {
             var game = _gameService.Get(id);
 

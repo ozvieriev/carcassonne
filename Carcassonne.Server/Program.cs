@@ -1,5 +1,6 @@
 using Carcassonne.Server.Api.Services;
 using Carcassonne.Server.Hubs;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,14 +24,17 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllers();
-app.MapHub<GameHub>("/game-hub");
+app.MapHub<GameHub>("/game-hub", options => {
+    
+});
 
 app.UseCors(builder =>
 {
     builder
-        .AllowAnyOrigin()
+        .WithOrigins("http://localhost:3000")
         .AllowAnyMethod()
-        .AllowAnyHeader();
+        .AllowAnyHeader()
+        .AllowCredentials();
 });
 
 app.Run();

@@ -9,8 +9,11 @@ namespace Carcassonne.Server.Api.ViewModels
         public GameViewModel(GameModel game)
         {
             Id = game.Id;
+            Users = game.Users;
         }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
+
+        public IEnumerable<string> Users { get; set; }
     }
 }
