@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33530.505
+# Visual Studio Version 18
+VisualStudioVersion = 18.3.11415.281 d18.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carcassonne.Server", "Carcassonne.Server\Carcassonne.Server.csproj", "{359741A0-CF58-4025-A0FC-A6CBEA097564}"
 EndProject
@@ -26,6 +26,26 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Carcassonne.Client", "Carca
 		SlnRelativePath = "Carcassonne.Client\"
 	EndProjectSection
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Carcassonne.Python.Server", "Carcassonne.Python.Server\", "{5F60B5BB-C88D-5358-40E2-480B3F6BBB71}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_54286"
+		Debug.AspNetCompiler.PhysicalPath = "Carcassonne.Python.Server\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54286\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_54286"
+		Release.AspNetCompiler.PhysicalPath = "Carcassonne.Python.Server\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_54286\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "54286"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +60,10 @@ Global
 		{D9AB1AFF-E930-4FE9-A684-4ABAB2820153}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9AB1AFF-E930-4FE9-A684-4ABAB2820153}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{D9AB1AFF-E930-4FE9-A684-4ABAB2820153}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5F60B5BB-C88D-5358-40E2-480B3F6BBB71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F60B5BB-C88D-5358-40E2-480B3F6BBB71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F60B5BB-C88D-5358-40E2-480B3F6BBB71}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F60B5BB-C88D-5358-40E2-480B3F6BBB71}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

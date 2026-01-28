@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ _('Signed in') }}{% endblock %}
+
+{% block content %}
+  <h1>{{ _('Signed in') }}</h1>
+  <p>{{ _('Welcome, %(name)s!', name=username) }}</p>
+  <p><a href="{{ url_for('home') }}">{{ _('Go to home') }}</a></p>
+{% endblock %}
