@@ -1,11 +1,8 @@
-from os import environ
 import uvicorn
+from os import environ
+from proj.core import config
+from proj.game.models import *
 
 if __name__ == '__main__':
-    HOST = environ.get('SERVER_HOST', '127.0.0.1')
-    try:
-        PORT = int(environ.get('SERVER_PORT', '8000'))
-    except ValueError:
-        PORT = 8000
-
-    uvicorn.run("proj:app", host=HOST, port=PORT, reload=True, log_level="debug")
+    uvicorn.run("proj:app", host=config.host, port=config.port,
+                reload=config.debug, log_level="debug")

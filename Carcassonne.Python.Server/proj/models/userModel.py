@@ -1,6 +1,8 @@
-class userModel():
-    __tablename__ = "users"
+from sqlalchemy import Column, Integer, String
+from ..db.base import Base
 
-    def __init__(self, id, email):
-        self.id = id
-        self.email = email
+class userModel(Base):
+    __tablename__ = "tblCategory"
+    __table_args__ = {"schema": "dbo"}
+
+    pkID = Column(Integer, primary_key=True)
