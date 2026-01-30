@@ -1,0 +1,315 @@
+[
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "CITY",
+            "W": "CITY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "CITY",
+            "W": "ROAD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "CITY",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "ROAD",
+            "W": "ROAD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "ROAD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "CITY",
+            "W": "ROAD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "CITY",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "ROAD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "CITY",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "ROAD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "ROAD"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "ROAD",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "FIELD",
+            "S": "ROAD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "ROAD",
+            "W": "ROAD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "ROAD",
+            "S": "ROAD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "ROAD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "ROAD",
+            "S": "CITY",
+            "W": "ROAD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "CITY",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "CITY",
+            "S": "ROAD",
+            "W": "CITY",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "CITY",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "ROAD",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "ROAD",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "FIELD",
+            "S": "ROAD",
+            "W": "FIELD",
+            "C": "MONASTERY"
+        }
+    },
+    {
+        "edges": {
+            "N": "FIELD",
+            "E": "FIELD",
+            "S": "FIELD",
+            "W": "ROAD",
+            "C": "MONASTERY"
+        }
+    }
+]

@@ -1,4 +1,5 @@
-from ..models.tile import tile, tileEdge, tileDirection
+from ..models import *
+import json
 
 
 class tileFactory:
@@ -13,3 +14,13 @@ class tileFactory:
         }
 
         return tile(edges)
+
+    @staticmethod
+    def loadFromMap():
+
+        with open("proj/game/tileMap.json", "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        tiles = [tile.from_dict(item) for item in data]
+
+        return tiles

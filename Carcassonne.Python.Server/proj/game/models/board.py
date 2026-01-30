@@ -11,14 +11,13 @@ class board:
         return self.tiles.get((x, y))
 
     def canPlaceTile(self, x: int, y: int, tile: tile) -> bool:
-
-        if (len(self.tiles)) == 0:
+        if (len(self.tiles) == 0):
             return True
 
         if (x, y) in self.tiles:
             return False
 
-        for direction, (nx, ny), opposite in self.neighbors(x, y):
+        for direction, (nx, ny), opposite in self.getNeighbors(x, y):
             neighbor = self.getTile(nx, ny)
 
             if neighbor is None:
@@ -33,7 +32,6 @@ class board:
         return True
 
     def placeTile(self, x: int, y: int, tile: tile) -> bool:
-
         if not self.canPlaceTile(x, y, tile):
             return False
 
@@ -46,7 +44,20 @@ class board:
     def removeTile(self, x: int, y: int):
         self.tiles.pop((x, y))
 
-    def neighbors(self, x: int, y: int):
+    def availablePositions(self) -> list[tuple[int, int]]:
+        positions = set()
+
+        if len(self.tiles) == 0:
+            return [(0, 0)]
+
+        for (x, y) in self.tiles.keys():
+            for direction, (nx, ny), _ in self.getNeighbors(x, y):
+                if (nx, ny) not in self.tiles:
+                    positions.add((nx, ny))
+
+        return positions
+    
+    def getNeighbors(self, x: int, y: int):
         yield (tileDirection.N, (x, y - 1), tileDirection.S)
         yield (tileDirection.E, (x + 1, y), tileDirection.W)
         yield (tileDirection.S, (x, y + 1), tileDirection.N)

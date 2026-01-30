@@ -1,8 +1,8 @@
-import pytest
-
+import logging
 from proj.game.factories import *
 from proj.game.models import *
 from proj.game.enums import *
+
 
 def test_createTileReturnsTile():
     createdTile = tileFactory.createTile(
@@ -52,6 +52,7 @@ def test_createTileEdgesAreCorrectRotated():
     assert createdTile.edge(tileDirection.S) == tileEdge.FIELD
     assert createdTile.edge(tileDirection.W) == tileEdge.ROAD
 
+
 def test_tileRotationChangesRotationValue():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
@@ -61,3 +62,10 @@ def test_tileRotationChangesRotationValue():
     assert createdTile.rotate() == 180
     assert createdTile.rotate() == 270
     assert createdTile.rotate() == 0
+
+
+def test_tileLoadFromMap():
+
+    tiles = tileFactory.loadFromMap()
+
+    assert len(tiles) > 0
