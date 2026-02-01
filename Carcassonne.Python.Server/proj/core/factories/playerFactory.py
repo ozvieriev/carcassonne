@@ -1,5 +1,4 @@
 from ..models.player import player
-from ..models.color import color
 import json
 
 

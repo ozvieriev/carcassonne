@@ -1,22 +1,27 @@
 [
   {
+    "id": "alice",
     "name": "Alice",
-    "color": { "name": "Red", "hex": "#f00" }
+    "color": "#f00"
   },
   {
+    "id": "bob",
     "name": "Bob",
-    "color": { "name": "Blue", "hex": "#007AFF" }
+    "color": "#007AFF"
   },
   {
+    "id": "carol",
     "name": "Carol",
-    "color": { "name": "Green", "hex": "#00C800" }
+    "color": "#00C800"
   },
   {
+    "id": "dave",
     "name": "Dave",
-    "color": { "name": "Yellow", "hex": "#FFCC00" }
+    "color": "#FFCC00"
   },
   {
+    "id": "eve",
     "name": "Eve",
-    "color": { "name": "Black", "hex": "#000" }
+    "color": "#000"
   }
 ]

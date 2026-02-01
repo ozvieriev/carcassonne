@@ -3,6 +3,7 @@ from .tile import tile
 from .player import player
 from ..enums import *
 import logging
+import json
 
 # optional color support
 try:
@@ -17,17 +18,21 @@ except Exception:
 
 
 class board:
-    def __init__(self):
-        self.tiles: Dict[Tuple[int, int], tile] = {}
-        self.players: list[player] = []
+    def __init__(self, players: list[player], tiles: list[tile]):
+        self.players: list[player] = players
+        self.tiles: list[tile] = tiles
+        self.moves: Dict[Tuple[int, int], tile] = {}
         self.currentPlayerIndex: int = 0
 
     def to_dict(self) -> dict:
         return {
-            #"tiles": self.tiles,
+            "moves": {f"{x},{y}": v.to_dict() for (x, y), v in self.moves.items()},
             "players": [player.to_dict() for player in self.players],
             "currentPlayerIndex": self.currentPlayerIndex,
         }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
 
     def addPlayer(self, player: player) -> None:
         """Add a player to the game in turn order."""
@@ -48,25 +53,32 @@ class board:
     def currentPlayer(self) -> Optional[player]:
         if not self.players:
             return None
-        
+
         return self.players[self.currentPlayerIndex]
 
     def nextPlayer(self) -> Optional[player]:
         """Advance to the next player and return them."""
         if not self.players:
             return None
-        
-        self.currentPlayerIndex = (self.currentPlayerIndex + 1) % len(self.players)
+
+        self.currentPlayerIndex = (
+            self.currentPlayerIndex + 1) % len(self.players)
         return self.currentPlayer()
 
+    def nextTile(self) -> Optional[tile]:
+        if not self.tiles:
+            return None
+
+        return self.tiles.pop(0)
+
     def getTile(self, x: int, y: int) -> Optional[tile]:
-        return self.tiles.get((x, y))
+        return self.moves.get((x, y))
 
     def canPlaceTile(self, x: int, y: int, tile: tile) -> bool:
-        if (len(self.tiles) == 0):
+        if (len(self.moves) == 0):
             return True
 
-        if (x, y) in self.tiles:
+        if (x, y) in self.moves:
             return False
 
         for direction, (nx, ny), opposite in self.getNeighbors(x, y):
@@ -88,26 +100,21 @@ class board:
             return False
 
         tile.setPlayer(self.currentPlayer())
-        self.addTile(x, y, tile)
+
+        self.moves[(x, y)] = tile
         self.nextPlayer()
-        
-        return True
 
-    def addTile(self, x: int, y: int, tile: tile):
-        self.tiles[(x, y)] = tile
-
-    def removeTile(self, x: int, y: int):
-        self.tiles.pop((x, y))
+        return True 
 
     def availablePositions(self) -> list[tuple[int, int]]:
         positions = set()
 
-        if len(self.tiles) == 0:
+        if len(self.moves) == 0:
             return [(0, 0)]
 
-        for (x, y) in self.tiles.keys():
+        for (x, y) in self.moves.keys():
             for direction, (nx, ny), _ in self.getNeighbors(x, y):
-                if (nx, ny) not in self.tiles:
+                if (nx, ny) not in self.moves:
                     positions.add((nx, ny))
 
         return positions
@@ -120,14 +127,14 @@ class board:
 
     def drawToLog(self):
         """Draws a detailed ASCII map of the board to the logs, showing tile edges and rotation."""
-        if not self.tiles:
+        if not self.moves:
             logging.info("Board is empty.")
             return
 
-        min_x = min(x for x, y in self.tiles)
-        max_x = max(x for x, y in self.tiles)
-        min_y = min(y for x, y in self.tiles)
-        max_y = max(y for x, y in self.tiles)
+        min_x = min(x for x, y in self.moves)
+        max_x = max(x for x, y in self.moves)
+        min_y = min(y for x, y in self.moves)
+        max_y = max(y for x, y in self.moves)
 
         def color_for_edge(e):
             # Map edge types to colors
@@ -167,7 +174,7 @@ class board:
             mid_parts = []
             bot_parts = []
             for x in range(min_x, max_x + 1):
-                t = self.tiles.get((x, y))
+                t = self.moves.get((x, y))
                 if t:
                     # Special-case tile at (0,0): render whole tile in red (if available)
                     if COLORAMA_AVAILABLE and x == 0 and y == 0:

@@ -8,17 +8,25 @@ class tile:
 
     ANGLE_STEP = 90
 
-    DIRECTIONS = (
+    DIRECTIONS = [
         tileDirection.N,
         tileDirection.E,
         tileDirection.S,
         tileDirection.W,
-    )
+    ]
 
     def __init__(self, edges: dict[tileDirection, tileEdge]):
         self.rotation = 0
         self.edges = edges
-        self.player: Optional[player] = None
+        self.playerId: Optional[str] = None
+
+    def to_dict(self) -> dict:
+        return {
+            "rotation": self.rotation,
+            #"edges": [self.edge(k) for k, v in self.edges.items()],
+            #{f"{x},{y}": v.to_dict() for (x, y), v in self.tiles.items()}
+            "playerId": self.playerId,
+        }
 
     @classmethod
     def from_dict(self, data: dict):
@@ -55,7 +63,7 @@ class tile:
 
     def setPlayer(self, player: player) -> None:
         """Set the current player"""
-        self.player = player
+        self.playerId = player.id
 
     def __repr__(self) -> str:
-        return f"rotation={self.rotation}, edges={self.edges} , player={self.player}"
+        return f"rotation={self.rotation}, edges={self.edges} , playerId={self.playerId}"

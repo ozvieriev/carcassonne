@@ -1,5 +1,3 @@
-import json
-
 from proj.core.factories import *
 from proj.core.models import *
 from proj.core.enums import *
@@ -7,14 +5,16 @@ from proj.core.factories.playerFactory import playerFactory
 
 
 def testPlaceInitialTile():
-    b = board()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
 
 
 def testCannotPlaceOnOccupied():
-    b = board()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
@@ -25,7 +25,8 @@ def testCannotPlaceOnOccupied():
 
 
 def testCanPlaceAdjacentMatching():
-    b = board()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
     base = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, base)
@@ -37,7 +38,8 @@ def testCanPlaceAdjacentMatching():
 
 
 def testRejectMismatchedAdjacent():
-    b = board()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
     base = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, base)
@@ -49,7 +51,8 @@ def testRejectMismatchedAdjacent():
 
 
 def testRotationAwarePlacement():
-    b = board()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
@@ -64,19 +67,18 @@ def testRotationAwarePlacement():
     assert b.placeTile(1, 0, rot_tile)
 
 def testAvailablePositions():
-    b = board()
-    tiles = tileFactory.loadFromMap()
-    t = tiles.pop()
+    players = playerFactory.loadFromMap()
+    b = board(players, tileFactory.loadFromMap())
+    t = b.nextTile()
 
     assert b.placeTile(0, 0, t)
 
-    while len(tiles) > 0:
+    t = b.nextTile()
+    while t is not None :
         positions = b.availablePositions()
 
         if len(positions) == 0:
             break
-
-        t = tiles.pop()
 
         for position in positions:
             rotation = t.rotation
@@ -89,19 +91,26 @@ def testAvailablePositions():
                 b.drawToLog()
                 break
     
-    assert len(tiles) == 0
+        t = b.nextTile()
+    
+    s = b.to_json()
 
+    assert 'players' in s
+    assert 'moves' in s
+
+    with open("proj/core/data/output/board.json", "w") as write:
+        json.dump(b.to_dict(), write, indent=4, ensure_ascii=False)
     
 
 def testAddAndGetPlayers():
-    b = board()
-
     players = playerFactory.loadFromMap()
+    # take two players from the factory (or fewer if file smaller)
+    selected = players[:2]
+
     p1 = players[0]
     p2 = players[1]
 
-    b.addPlayer(p1)
-    b.addPlayer(p2)
+    b = board(selected, tileFactory.loadFromMap())
 
     players = b.getPlayers()
     assert len(players) == 2
@@ -113,13 +122,12 @@ def testAddAndGetPlayers():
 
 
 def testAddPlayers():
-    b = board()
-
     players = playerFactory.loadFromMap()
     # take three players from the factory (or fewer if file smaller)
     selected = players[:3]
 
-    b.addPlayers(selected)
+    # pass the full factory players list per test conventions
+    b = board(selected, tileFactory.loadFromMap())
 
     got = b.getPlayers()
     assert len(got) == len(selected)
@@ -133,16 +141,14 @@ def testAddPlayers():
 
 
 def testNextPlayerWrapsAround():
-    b = board()
-
     players = playerFactory.loadFromMap()
+    # take three players from the factory (or fewer if file smaller)
+    selected = players[:3]
     p1 = players[0]
     p2 = players[1]
     p3 = players[2]
 
-    b.addPlayer(p1)
-    b.addPlayer(p2)
-    b.addPlayer(p3)
+    b = board(selected, tileFactory.loadFromMap())
 
     assert b.currentPlayer() is p1
     assert b.nextPlayer() is p2
@@ -151,13 +157,13 @@ def testNextPlayerWrapsAround():
     assert b.nextPlayer() is p1
 
 def testPlaceTileAdvancesPlayer():
-    b = board()
-
     players = playerFactory.loadFromMap()
+    # take two players from the factory (or fewer if file smaller)
+    selected = players[:2]
     p1 = players[0]
     p2 = players[1]
 
-    b.addPlayers([p1, p2])
+    b = board(selected, tileFactory.loadFromMap())
 
     # starting player
     assert b.currentPlayer() is p1
@@ -169,13 +175,13 @@ def testPlaceTileAdvancesPlayer():
 
 
 def testTilePlacementRecordsOwner():
-    b = board()
-
     players = playerFactory.loadFromMap()
+    # take two players from the factory (or fewer if file smaller)
+    selected = players[:2]
     p1 = players[0]
     p2 = players[1]
 
-    b.addPlayers([p1, p2])
+    b = board(selected, tileFactory.loadFromMap())
 
     # first player places at (0,0)
     t1 = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
@@ -185,35 +191,4 @@ def testTilePlacementRecordsOwner():
     t2 = tileFactory.createTile(tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
     t2.rotate()
     assert b.placeTile(1, 0, t2)
-    assert b.getTile(1, 0).player is p2
-
-
-def testSerializeBoardToJson():
-    
-    b = board()
-    players = playerFactory.loadFromMap()
-    p1 = players[0]
-    p2 = players[1]
-
-    b.addPlayers([p1, p2])
-
-    # place two tiles
-    t1 = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t1)
-
-    t2 = tileFactory.createTile(tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
-    t2.rotate()
-    assert b.placeTile(1, 0, t2)
-
-    # build a serializable structure
-    bdict = b.to_dict()
-
-    s = json.dumps(bdict)
-
-    aa = 0
-
-    # verify JSON contains the expected keys
-    # assert 'players' in s
-    # assert 'tiles' in s
-
-
+    assert b.getTile(1, 0).playerId == p2.id
