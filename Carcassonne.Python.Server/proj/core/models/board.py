@@ -1,6 +1,9 @@
 from typing import Dict, Tuple, Optional, List
 from .tile import tile
 from .player import player
+from .move import move
+from .point import point
+from ..utils import *
 from ..enums import *
 import logging
 import json
@@ -21,14 +24,14 @@ class board:
     def __init__(self, players: list[player], tiles: list[tile]):
         self.players: list[player] = players
         self.tiles: list[tile] = tiles
-        self.moves: Dict[Tuple[int, int], tile] = {}
-        self.currentPlayerIndex: int = 0
+        self.dictMoves: Dict[Tuple[int, int], tile] = {}
+        self.moves: Dict[Tuple[int, int], move] = {}
 
     def to_dict(self) -> dict:
         return {
-            "moves": {f"{x},{y}": v.to_dict() for (x, y), v in self.moves.items()},
-            "players": [player.to_dict() for player in self.players],
-            "currentPlayerIndex": self.currentPlayerIndex,
+            #"dictMoves": {f"{x},{y}": v.to_dict() for (x, y), v in self.dictMoves.items()},
+            # "moves": {f"{x},{y}": v.to_dict() for (x, y), v in self.moves.items()},
+            "players": [player.to_dict() for player in self.players]
         }
 
     def to_json(self) -> str:
@@ -50,35 +53,46 @@ class board:
     def getPlayers(self) -> list[player]:
         return list(self.players)
 
-    def currentPlayer(self) -> Optional[player]:
+    def getCurrentPlayer(self) -> Optional[player]:
         if not self.players:
             return None
 
-        return self.players[self.currentPlayerIndex]
+        if (not self.moves):
+            return self.players[0]
 
-    def nextPlayer(self) -> Optional[player]:
-        """Advance to the next player and return them."""
-        if not self.players:
-            return None
+        move = list(self.moves.values())[-1]
+        
+        index = indexOf(self.players,
+                         lambda entity: entity.id == move.playerId)
 
-        self.currentPlayerIndex = (
-            self.currentPlayerIndex + 1) % len(self.players)
-        return self.currentPlayer()
+        return nextItem(self.players, index)
 
-    def nextTile(self) -> Optional[tile]:
+    def getNextTile(self) -> Optional[tile]:
         if not self.tiles:
             return None
 
-        return self.tiles.pop(0)
+        index = len(self.moves)
 
-    def getTile(self, x: int, y: int) -> Optional[tile]:
-        return self.moves.get((x, y))
+        if (index >= len(self.tiles)):
+            return None
+
+        return self.tiles[index]
+
+    def getMove(self, point: point) -> move | None:
+        return self.moves.get((point.x, point.y))
+
+    def getTile(self, x: int, y: int) -> tile | None:
+        move = self.getMove(point(x, y))
+        
+        return move.tile if move else None
 
     def canPlaceTile(self, x: int, y: int, tile: tile) -> bool:
-        if (len(self.moves) == 0):
+        if (not self.moves):
             return True
 
-        if (x, y) in self.moves:
+        move = self.getMove(point(x, y))
+
+        if move is not None:
             return False
 
         for direction, (nx, ny), opposite in self.getNeighbors(x, y):
@@ -99,17 +113,19 @@ class board:
         if not self.canPlaceTile(x, y, tile):
             return False
 
-        tile.setPlayer(self.currentPlayer())
+        player = self.getCurrentPlayer()
 
-        self.moves[(x, y)] = tile
-        self.nextPlayer()
+        tile.setPlayer(player)
 
-        return True 
+        self.dictMoves[(x, y)] = tile
+        self.moves[(x, y)] = move(player, tile, point(x, y), tile.rotation)
 
-    def availablePositions(self) -> list[tuple[int, int]]:
+        return True
+
+    def getAvailablePositions(self) -> list[tuple[int, int]]:
         positions = set()
 
-        if len(self.moves) == 0:
+        if not self.moves:
             return [(0, 0)]
 
         for (x, y) in self.moves.keys():
@@ -174,7 +190,7 @@ class board:
             mid_parts = []
             bot_parts = []
             for x in range(min_x, max_x + 1):
-                t = self.moves.get((x, y))
+                t = self.dictMoves.get((x, y))
                 if t:
                     # Special-case tile at (0,0): render whole tile in red (if available)
                     if COLORAMA_AVAILABLE and x == 0 and y == 0:

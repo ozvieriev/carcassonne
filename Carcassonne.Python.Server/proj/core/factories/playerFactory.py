@@ -1,6 +1,5 @@
 from ..models.player import player
-import json
-
+import json, random
 
 class playerFactory:
     @staticmethod
@@ -9,5 +8,6 @@ class playerFactory:
             data = json.load(f)
 
         players = [player.from_dict(item) for item in data]
+        #random.shuffle(players)
 
         return players

@@ -1,5 +1,5 @@
 from ..models import *
-import json
+import json, random
 
 
 class tileFactory:
@@ -22,5 +22,6 @@ class tileFactory:
             data = json.load(f)
 
         tiles = [tile.from_dict(item) for item in data]
-
+        random.shuffle(tiles)
+        
         return tiles

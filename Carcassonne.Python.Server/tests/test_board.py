@@ -69,13 +69,13 @@ def testRotationAwarePlacement():
 def testAvailablePositions():
     players = playerFactory.loadFromMap()
     b = board(players, tileFactory.loadFromMap())
-    t = b.nextTile()
+    t = b.getNextTile()
 
     assert b.placeTile(0, 0, t)
 
-    t = b.nextTile()
+    t = b.getNextTile()
     while t is not None :
-        positions = b.availablePositions()
+        positions = b.getAvailablePositions()
 
         if len(positions) == 0:
             break
@@ -91,12 +91,11 @@ def testAvailablePositions():
                 b.drawToLog()
                 break
     
-        t = b.nextTile()
+        t = b.getNextTile()
     
     s = b.to_json()
 
     assert 'players' in s
-    assert 'moves' in s
 
     with open("proj/core/data/output/board.json", "w") as write:
         json.dump(b.to_dict(), write, indent=4, ensure_ascii=False)
@@ -118,7 +117,7 @@ def testAddAndGetPlayers():
     assert players[1] is p2
 
     # current player should be first added
-    assert b.currentPlayer() is p1
+    assert b.getCurrentPlayer() is p1
 
 
 def testAddPlayers():
@@ -137,24 +136,7 @@ def testAddPlayers():
 
     # first added becomes current player
     if len(selected) > 0:
-        assert b.currentPlayer() is selected[0]
-
-
-def testNextPlayerWrapsAround():
-    players = playerFactory.loadFromMap()
-    # take three players from the factory (or fewer if file smaller)
-    selected = players[:3]
-    p1 = players[0]
-    p2 = players[1]
-    p3 = players[2]
-
-    b = board(selected, tileFactory.loadFromMap())
-
-    assert b.currentPlayer() is p1
-    assert b.nextPlayer() is p2
-    assert b.nextPlayer() is p3
-    # wrap back to first
-    assert b.nextPlayer() is p1
+        assert b.getCurrentPlayer() is selected[0]
 
 def testPlaceTileAdvancesPlayer():
     players = playerFactory.loadFromMap()
@@ -166,12 +148,12 @@ def testPlaceTileAdvancesPlayer():
     b = board(selected, tileFactory.loadFromMap())
 
     # starting player
-    assert b.currentPlayer() is p1
+    assert b.getCurrentPlayer() is p1
 
     # placing a tile should advance to next player
     t = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
-    assert b.currentPlayer() is p2
+    assert b.getCurrentPlayer() is p2
 
 
 def testTilePlacementRecordsOwner():
