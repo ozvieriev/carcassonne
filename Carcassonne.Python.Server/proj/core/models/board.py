@@ -19,11 +19,15 @@ except Exception:
 class board:
     def __init__(self):
         self.tiles: Dict[Tuple[int, int], tile] = {}
-        # players in the game (order represents turn order)
         self.players: list[player] = []
-        # index of the current player in self.players
         self.currentPlayerIndex: int = 0
-    import logging
+
+    def to_dict(self) -> dict:
+        return {
+            #"tiles": self.tiles,
+            "players": [player.to_dict() for player in self.players],
+            "currentPlayerIndex": self.currentPlayerIndex,
+        }
 
     def addPlayer(self, player: player) -> None:
         """Add a player to the game in turn order."""

@@ -5,6 +5,11 @@ class player:
         self.name = name
         self.color = color
 
+    def to_dict(self) -> dict:
+        return {
+            "name": self.name,
+        }
+
     @classmethod
     def from_dict(self, data: dict):
         name = data.get("name", "")

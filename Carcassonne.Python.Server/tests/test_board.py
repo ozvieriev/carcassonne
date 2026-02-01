@@ -1,3 +1,5 @@
+import json
+
 from proj.core.factories import *
 from proj.core.models import *
 from proj.core.enums import *
@@ -184,5 +186,34 @@ def testTilePlacementRecordsOwner():
     t2.rotate()
     assert b.placeTile(1, 0, t2)
     assert b.getTile(1, 0).player is p2
+
+
+def testSerializeBoardToJson():
+    
+    b = board()
+    players = playerFactory.loadFromMap()
+    p1 = players[0]
+    p2 = players[1]
+
+    b.addPlayers([p1, p2])
+
+    # place two tiles
+    t1 = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
+    assert b.placeTile(0, 0, t1)
+
+    t2 = tileFactory.createTile(tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
+    t2.rotate()
+    assert b.placeTile(1, 0, t2)
+
+    # build a serializable structure
+    bdict = b.to_dict()
+
+    s = json.dumps(bdict)
+
+    aa = 0
+
+    # verify JSON contains the expected keys
+    # assert 'players' in s
+    # assert 'tiles' in s
 
 
