@@ -1,16 +1,16 @@
 import logging
-from proj.game.factories import *
-from proj.game.models import *
-from proj.game.enums import *
+from proj.core.factories import *
+from proj.core.models import *
+from proj.core.enums import *
 
 
-def test_createTileReturnsTile():
+def testCreateTileReturnsTile():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert isinstance(createdTile, tile)
 
 
-def test_createTileEdgesAreCorrect():
+def testCreateTileEdgesAreCorrect():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
 
@@ -20,7 +20,7 @@ def test_createTileEdgesAreCorrect():
     assert createdTile.edge(tileDirection.W) == tileEdge.ROAD
 
 
-def test_createTileEdgesAreCorrectRotated():
+def testCreateTileEdgesAreCorrectRotated():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
 
@@ -53,7 +53,7 @@ def test_createTileEdgesAreCorrectRotated():
     assert createdTile.edge(tileDirection.W) == tileEdge.ROAD
 
 
-def test_tileRotationChangesRotationValue():
+def testTileRotationChangesRotationValue():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
 
@@ -64,7 +64,7 @@ def test_tileRotationChangesRotationValue():
     assert createdTile.rotate() == 0
 
 
-def test_tileLoadFromMap():
+def testTileLoadFromMap():
 
     tiles = tileFactory.loadFromMap()
 

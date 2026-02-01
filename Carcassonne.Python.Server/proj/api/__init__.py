@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends
-from ..repositories.userRepository import userRepository
-from ..services.userService import userService
+from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
-router = APIRouter()
+app = FastAPI(title="Carcassonne", debug=True)
 
-def createUserService(repository=Depends(userRepository)) -> userService:
-    return userService(repository)
+# import and include routers (they must expose `router`)
+from .routes import router
 
-from . import userRoute
+app.include_router(router)          # api routes (e.g. /user/{userId})

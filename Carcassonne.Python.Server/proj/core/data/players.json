@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Alice",
+    "color": { "name": "Red", "hex": "#f00" }
+  },
+  {
+    "name": "Bob",
+    "color": { "name": "Blue", "hex": "#007AFF" }
+  },
+  {
+    "name": "Carol",
+    "color": { "name": "Green", "hex": "#00C800" }
+  },
+  {
+    "name": "Dave",
+    "color": { "name": "Yellow", "hex": "#FFCC00" }
+  },
+  {
+    "name": "Eve",
+    "color": { "name": "Black", "hex": "#000" }
+  }
+]

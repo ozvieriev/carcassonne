@@ -1,5 +1,7 @@
 from ..enums import *
+from .player import player
 from dataclasses import dataclass
+from typing import Optional
 
 @dataclass
 class tile:
@@ -16,6 +18,7 @@ class tile:
     def __init__(self, edges: dict[tileDirection, tileEdge]):
         self.rotation = 0
         self.edges = edges
+        self.player: Optional[player] = None
 
     @classmethod
     def from_dict(self, data: dict):
@@ -41,5 +44,18 @@ class tile:
 
         return self.edges[direction]
     
+    def edgeName(self, direction: tileDirection) -> tileEdge:
+        
+        edge = self.edge(direction)
+
+        if(edge is not None):
+            return edge.name[0]
+        
+        return None 
+
+    def setPlayer(self, player: player) -> None:
+        """Set the current player"""
+        self.player = player
+
     def __repr__(self) -> str:
-        return f"rotation={self.rotation}, edges={self.edges} "
+        return f"rotation={self.rotation}, edges={self.edges} , player={self.player}"

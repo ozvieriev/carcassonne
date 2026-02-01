@@ -16,9 +16,9 @@ class tileFactory:
         return tile(edges)
 
     @staticmethod
-    def loadFromMap():
+    def loadFromMap(path: str = "proj/core/data/tiles.json"):
 
-        with open("proj/game/tileMap.json", "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
         tiles = [tile.from_dict(item) for item in data]
