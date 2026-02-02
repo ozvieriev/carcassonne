@@ -15,10 +15,11 @@ class tile:
         tileDirection.W,
     ]
 
-    def __init__(self, edges: dict[tileDirection, tileEdge]):
+    def __init__(self, img: str, edges: dict[tileDirection, tileEdge]):
         self.rotation = 0
+        self.img: str = img
         self.edges = edges
-        self.playerId: Optional[str] = None
+        self.playerId: str = None
 
     def to_dict(self) -> dict:
         return {
@@ -34,7 +35,7 @@ class tile:
             tileDirection[k]: tileEdge[v] for k, v in data["edges"].items()
         }
 
-        return self(edges)
+        return self(data["img"], edges)
 
     def rotate(self):
         self.rotation = (self.rotation + self.ANGLE_STEP) % 360

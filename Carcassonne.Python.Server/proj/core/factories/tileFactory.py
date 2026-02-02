@@ -13,7 +13,7 @@ class tileFactory:
             tileDirection.C: center
         }
 
-        return tile(edges)
+        return tile("",edges)
 
     @staticmethod
     def loadFromMap(path: str = "proj/core/data/tiles.json"):
@@ -22,6 +22,6 @@ class tileFactory:
             data = json.load(f)
 
         tiles = [tile.from_dict(item) for item in data]
-        random.shuffle(tiles)
-        
+        #random.shuffle(tiles)
+
         return tiles

@@ -1,7 +1,9 @@
 from proj.core.factories import *
+from proj.core.services import *
 from proj.core.models import *
 from proj.core.enums import *
 from proj.core.factories.playerFactory import playerFactory
+import time
 
 
 def testPlaceInitialTile():
@@ -66,15 +68,22 @@ def testRotationAwarePlacement():
     assert rot_tile.rotation == 90
     assert b.placeTile(1, 0, rot_tile)
 
-def testAvailablePositions():
+
+def testAvailablePositions(request):
+
     players = playerFactory.loadFromMap()
     b = board(players, tileFactory.loadFromMap())
+    r = renderService(b)
+    htmlS = htmlService()
+
     t = b.getNextTile()
 
     assert b.placeTile(0, 0, t)
 
+    htmlS.saveToFile(request.node.name, r.toHtml())
+
     t = b.getNextTile()
-    while t is not None :
+    while t is not None:
         positions = b.getAvailablePositions()
 
         if len(positions) == 0:
@@ -84,22 +93,23 @@ def testAvailablePositions():
             rotation = t.rotation
 
             while (placed := b.placeTile(position[0], position[1], t)) is False:
+
+                if (placed):
+                    htmlS.saveToFile(request.node.name, r.toHtml())
+
                 if rotation == t.rotate():
                     break
-            
-            if placed:
-                b.drawToLog()
-                break
-    
+
         t = b.getNextTile()
-    
-    s = b.to_json()
+
+    s = r.toJson()
 
     assert 'players' in s
 
     with open("proj/core/data/output/board.json", "w") as write:
         json.dump(b.to_dict(), write, indent=4, ensure_ascii=False)
     
+    #htmlS.saveToFile(request.node.name, r.toHtml())
 
 def testAddAndGetPlayers():
     players = playerFactory.loadFromMap()
@@ -138,6 +148,7 @@ def testAddPlayers():
     if len(selected) > 0:
         assert b.getCurrentPlayer() is selected[0]
 
+
 def testPlaceTileAdvancesPlayer():
     players = playerFactory.loadFromMap()
     # take two players from the factory (or fewer if file smaller)
@@ -151,7 +162,8 @@ def testPlaceTileAdvancesPlayer():
     assert b.getCurrentPlayer() is p1
 
     # placing a tile should advance to next player
-    t = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
+    t = tileFactory.createTile(
+        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
     assert b.getCurrentPlayer() is p2
 
@@ -166,11 +178,13 @@ def testTilePlacementRecordsOwner():
     b = board(selected, tileFactory.loadFromMap())
 
     # first player places at (0,0)
-    t1 = tileFactory.createTile(tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
+    t1 = tileFactory.createTile(
+        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t1)
 
     # next player places at (1,0) using a tile that rotates to match west==ROAD
-    t2 = tileFactory.createTile(tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
+    t2 = tileFactory.createTile(
+        tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
     t2.rotate()
     assert b.placeTile(1, 0, t2)
     assert b.getTile(1, 0).playerId == p2.id

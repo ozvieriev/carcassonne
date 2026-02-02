@@ -1,0 +1,30 @@
+.board {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.board .tile {
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.board .tile img {
+    width: 100%;
+    height: 100%;
+}
+
+.board .tile.r-90{
+    transform: rotate(90deg);
+}
+
+.board .tile.r-180{
+    transform: rotate(180deg);
+}
+
+.board .tile.r-270{
+    transform: rotate(270deg);
+}

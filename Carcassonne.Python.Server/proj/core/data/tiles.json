@@ -1,315 +1,93 @@
 [
+    
     {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "CITY",
-            "W": "CITY"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "CITY",
-            "W": "ROAD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "CITY",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "ROAD",
-            "W": "ROAD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "ROAD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "CITY",
-            "W": "ROAD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "CITY",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "ROAD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "FIELD"
-        }
-    },
-    {
+        "img": "Base_Game_C2_Tile_D.png",
         "edges": {
             "N": "CITY",
             "E": "ROAD",
             "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "FIELD",
-            "S": "CITY",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "FIELD",
-            "S": "ROAD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "FIELD",
-            "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "ROAD"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "ROAD",
-            "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "FIELD",
-            "S": "ROAD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "FIELD",
-            "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "FIELD",
-            "E": "FIELD",
-            "S": "FIELD",
-            "W": "FIELD"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "ROAD",
             "W": "ROAD",
-            "C": "MONASTERY"
+            "C": "ROAD"
         }
     },
     {
-        "edges": {
-            "N": "CITY",
-            "E": "CITY",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
+        "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
         "edges": {
             "N": "CITY",
             "E": "FIELD",
             "S": "FIELD",
             "W": "FIELD",
-            "C": "MONASTERY"
+            "C": "FIELD"
         }
     },
     {
-        "edges": {
-            "N": "ROAD",
-            "E": "ROAD",
-            "S": "ROAD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "ROAD",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "ROAD",
-            "E": "FIELD",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "FIELD",
-            "E": "FIELD",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "CITY",
-            "E": "ROAD",
-            "S": "CITY",
-            "W": "ROAD",
-            "C": "MONASTERY"
-        }
-    },
-    {
+        "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
         "edges": {
             "N": "CITY",
             "E": "FIELD",
             "S": "CITY",
             "W": "FIELD",
-            "C": "MONASTERY"
+            "C": "FIELD"
         }
     },
     {
+        "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
         "edges": {
-            "N": "ROAD",
-            "E": "CITY",
-            "S": "ROAD",
+            "N": "CITY",
+            "E": "FIELD",
+            "S": "FIELD",
             "W": "CITY",
-            "C": "MONASTERY"
+            "C": "FIELD"
         }
     },
     {
+        "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
         "edges": {
-            "N": "FIELD",
+            "N": "CITY",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "CITY"
+        }
+    },
+    {
+        "img": "Abbot-Base_Game_C2_Tile_N_Garden.png",
+        "edges": {
+            "N": "CITY",
+            "E": "CITY",
+            "S": "FIELD",
+            "W": "FIELD",
+            "C": "CITY"
+        }
+    },
+    {
+        "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
+        "edges": {
+            "N": "CITY",
             "E": "CITY",
             "S": "FIELD",
             "W": "CITY",
-            "C": "MONASTERY"
+            "C": "CITY"
         }
     },
     {
+        "img": "Abbot-Base_Game_C2_Tile_U_Garden.png",
         "edges": {
             "N": "ROAD",
-            "E": "CITY",
-            "S": "FIELD",
+            "E": "FIELD",
+            "S": "ROAD",
             "W": "FIELD",
-            "C": "MONASTERY"
+            "C": "FIELD"
         }
     },
     {
-        "edges": {
-            "N": "FIELD",
-            "E": "ROAD",
-            "S": "FIELD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
+        "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
         "edges": {
             "N": "FIELD",
             "E": "FIELD",
             "S": "ROAD",
-            "W": "FIELD",
-            "C": "MONASTERY"
-        }
-    },
-    {
-        "edges": {
-            "N": "FIELD",
-            "E": "FIELD",
-            "S": "FIELD",
             "W": "ROAD",
-            "C": "MONASTERY"
+            "C": "ROAD"
         }
     }
 ]

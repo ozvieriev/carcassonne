@@ -24,18 +24,13 @@ class board:
     def __init__(self, players: list[player], tiles: list[tile]):
         self.players: list[player] = players
         self.tiles: list[tile] = tiles
-        self.dictMoves: Dict[Tuple[int, int], tile] = {}
         self.moves: Dict[Tuple[int, int], move] = {}
 
     def to_dict(self) -> dict:
         return {
-            #"dictMoves": {f"{x},{y}": v.to_dict() for (x, y), v in self.dictMoves.items()},
             # "moves": {f"{x},{y}": v.to_dict() for (x, y), v in self.moves.items()},
             "players": [player.to_dict() for player in self.players]
         }
-
-    def to_json(self) -> str:
-        return json.dumps(self.to_dict())
 
     def addPlayer(self, player: player) -> None:
         """Add a player to the game in turn order."""
@@ -116,8 +111,6 @@ class board:
         player = self.getCurrentPlayer()
 
         tile.setPlayer(player)
-
-        self.dictMoves[(x, y)] = tile
         self.moves[(x, y)] = move(player, tile, point(x, y), tile.rotation)
 
         return True
@@ -129,7 +122,7 @@ class board:
             return [(0, 0)]
 
         for (x, y) in self.moves.keys():
-            for direction, (nx, ny), _ in self.getNeighbors(x, y):
+            for _, (nx, ny), _ in self.getNeighbors(x, y):
                 if (nx, ny) not in self.moves:
                     positions.add((nx, ny))
 
@@ -140,108 +133,3 @@ class board:
         yield (tileDirection.E, (x + 1, y), tileDirection.W)
         yield (tileDirection.S, (x, y + 1), tileDirection.N)
         yield (tileDirection.W, (x - 1, y), tileDirection.E)
-
-    def drawToLog(self):
-        """Draws a detailed ASCII map of the board to the logs, showing tile edges and rotation."""
-        if not self.moves:
-            logging.info("Board is empty.")
-            return
-
-        min_x = min(x for x, y in self.moves)
-        max_x = max(x for x, y in self.moves)
-        min_y = min(y for x, y in self.moves)
-        max_y = max(y for x, y in self.moves)
-
-        def color_for_edge(e):
-            # Map edge types to colors
-            if not COLORAMA_AVAILABLE:
-                return lambda ch: ch
-
-            mapping = {
-                'CITY': Fore.RED,
-                'ROAD': Fore.YELLOW,
-                'FIELD': Fore.GREEN,
-                'MONASTERY': Fore.MAGENTA,
-                '_': Style.DIM,
-            }
-
-            def _color(ch, e=e):
-                key = getattr(e, 'name', str(e)) if e else '_'
-                col = mapping.get(key, '')
-                return f"{col}{ch}{Style.RESET_ALL}" if col else ch
-
-            return _color
-
-        def safe_edge_short(t, direction):
-            try:
-                e = t.edge(direction)
-                ch = t.edgeName(direction)
-                colorizer = color_for_edge(e)
-                return colorizer(ch)
-            except Exception:
-                colorizer = color_for_edge(None)
-                return colorizer("_")
-
-        rows = []
-        cols = max_x - min_x + 1
-
-        for y in range(min_y, max_y + 1):
-            top_parts = []
-            mid_parts = []
-            bot_parts = []
-            for x in range(min_x, max_x + 1):
-                t = self.dictMoves.get((x, y))
-                if t:
-                    # Special-case tile at (0,0): render whole tile in red (if available)
-                    if COLORAMA_AVAILABLE and x == 0 and y == 0:
-                        # use raw single-character markers (no per-edge color)
-                        n_raw = t.edgeName(tileDirection.N)
-                        e_raw = t.edgeName(tileDirection.E)
-                        s_raw = t.edgeName(tileDirection.S)
-                        w_raw = t.edgeName(tileDirection.W)
-
-                        # Highlight using a bright background so it stands out in logs.
-                        highlight_prefix = f"{Back.YELLOW}{Style.BRIGHT}{Fore.BLACK}"
-                        highlight_suffix = Style.RESET_ALL
-
-                        top_parts.append(
-                            f"{highlight_prefix}*{n_raw}*{highlight_suffix}")
-                        mid_parts.append(
-                            f"{highlight_prefix}{w_raw}*{e_raw}{highlight_suffix}")
-                        bot_parts.append(
-                            f"{highlight_prefix}*{s_raw}*{highlight_suffix}")
-                    else:
-                        n = safe_edge_short(t, tileDirection.N)
-                        e = safe_edge_short(t, tileDirection.E)
-                        s = safe_edge_short(t, tileDirection.S)
-                        w = safe_edge_short(t, tileDirection.W)
-                        c = safe_edge_short(t, tileDirection.C)
-
-                        # Format per user request:
-                        # *N*
-                        # W*E
-                        # *S*
-                        top_parts.append(f" {n} ")
-                        mid_parts.append(f"{w}{c}{e}")
-                        bot_parts.append(f" {s} ")
-                else:
-                    top_parts.append("   ")
-                    mid_parts.append("   ")
-                    bot_parts.append("   ")
-
-            # join columns with a vertical '|' separator
-            top = '|'.join(top_parts)
-            mid = '|'.join(mid_parts)
-            bot = '|'.join(bot_parts)
-
-            rows.append(top)
-            rows.append(mid)
-            rows.append(bot)
-
-            if y != max_y:
-                sep_len = cols * 3 + (cols - 1) * 1
-                rows.append('-' * sep_len)
-
-        board_str = '\n'.join(rows)
-        logging.info(
-            "\n--------------------------------------------------------------------\n%s", board_str)
