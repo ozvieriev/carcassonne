@@ -1,0 +1,9 @@
+[
+    { "img": "Abbot-Base_Game_C2_Tile_E_Garden.png", "edges": "CFFF" },
+    { "img": "Abbot-Base_Game_C2_Tile_H_Garden.png", "edges": "CFCF" },
+    { "img": "Abbot-Base_Game_C2_Tile_M_Garden.png", "edges": "CCFF" },
+    { "img": "Abbot-Base_Game_C2_Tile_N_Garden.png", "edges": "CCFF" },
+    { "img": "Abbot-Base_Game_C2_Tile_R_Garden.png", "edges": "CCFC" },
+    { "img": "Abbot-Base_Game_C2_Tile_U_Garden.png", "edges": "RFRF" },
+    { "img": "Abbot-Base_Game_C2_Tile_V_Garden.png", "edges": "FFRR" }
+]

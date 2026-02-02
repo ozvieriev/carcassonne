@@ -3,7 +3,7 @@ from proj.core.services import *
 from proj.core.models import *
 from proj.core.enums import *
 from proj.core.factories.playerFactory import playerFactory
-import time
+from time import sleep
 
 
 def testPlaceInitialTile():
@@ -59,14 +59,10 @@ def testRotationAwarePlacement():
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
 
-    # base east is ROAD, so tile at (1,0) must have west == ROAD
-    # create a tile whose south == ROAD, and rotate it so south moves to west
     rot_tile = tileFactory.createTile(
-        tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
-    # after one 90-degree clockwise rotation, the edge in the west position will be original south
-    rot_tile.rotate()
-    assert rot_tile.rotation == 90
-    assert b.placeTile(1, 0, rot_tile)
+        tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD)
+
+    assert b.placeTile(1, 0, rot_tile, tileRotation.R90)
 
 
 def testAvailablePositions(request):
@@ -77,30 +73,28 @@ def testAvailablePositions(request):
     htmlS = htmlService()
 
     t = b.getNextTile()
-
     assert b.placeTile(0, 0, t)
 
-    htmlS.saveToFile(request.node.name, r.toHtml())
-
-    t = b.getNextTile()
-    while t is not None:
-        positions = b.getAvailablePositions()
-
+    while (t := b.getNextTile()) is not None:
+        placed = False
+        positions = b.getAvailablePositions(t)
+        htmlS.saveToFile(request.node.name, r.toHtml(t))  
+          
         if len(positions) == 0:
-            break
+           assert False, "No available positions to place tile" #TODO
 
         for position in positions:
-            rotation = t.rotation
+            rotation = tileRotation.R0
 
-            while (placed := b.placeTile(position[0], position[1], t)) is False:
+            while (placed := b.placeTile(position[0], position[1], t, rotation)) is False:
+                rotation = rotation.rotate()
 
-                if (placed):
-                    htmlS.saveToFile(request.node.name, r.toHtml())
-
-                if rotation == t.rotate():
+                if rotation == tileRotation.R0:
                     break
 
-        t = b.getNextTile()
+            if (placed):
+                htmlS.saveToFile(request.node.name, r.toHtml())
+                break
 
     s = r.toJson()
 
@@ -108,8 +102,9 @@ def testAvailablePositions(request):
 
     with open("proj/core/data/output/board.json", "w") as write:
         json.dump(b.to_dict(), write, indent=4, ensure_ascii=False)
-    
-    #htmlS.saveToFile(request.node.name, r.toHtml())
+
+    htmlS.saveToFile(request.node.name, r.toHtml())
+
 
 def testAddAndGetPlayers():
     players = playerFactory.loadFromMap()
@@ -179,12 +174,12 @@ def testTilePlacementRecordsOwner():
 
     # first player places at (0,0)
     t1 = tileFactory.createTile(
-        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
+        tileEdge.CITY, tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t1)
 
     # next player places at (1,0) using a tile that rotates to match west==ROAD
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
-    t2.rotate()
+
     assert b.placeTile(1, 0, t2)
     assert b.getTile(1, 0).playerId == p2.id

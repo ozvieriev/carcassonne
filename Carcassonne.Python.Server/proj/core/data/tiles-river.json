@@ -1,0 +1,14 @@
+[
+    { "img": "River_I_C2_Tile_L.png", "edges": "rFFF" },
+    { "img": "River_III_C2_Tile_E.png", "edges": "CCrr" },    
+    { "img": "River_III_C2_Tile_B.png", "edges": "CrRr" },
+    { "img": "River_III_C2_Tile_C.png", "edges": "CrCr" },
+    { "img": "River_III_C2_Tile_D.png", "edges": "rFrF" },
+    { "img": "River_III_C2_Tile_J.png", "edges": "FrrF" },
+    { "img": "River_III_C2_Tile_F.png", "edges": "rFrF" },
+    { "img": "River_III_C2_Tile_G.png", "edges": "rFFr" },
+    { "img": "River_III_C2_Tile_H.png", "edges": "FrRr" },
+    { "img": "River_III_C2_Tile_I.png", "edges": "RrrR" },
+    { "img": "River_III_C2_Tile_K.png", "edges": "rRrR" },
+    { "img": "River_III_C2_Tile_A.png", "edges": "FFrF" }
+]

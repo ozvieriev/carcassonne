@@ -8,51 +8,65 @@ class tile:
 
     ANGLE_STEP = 90
 
-    DIRECTIONS = [
+    EDGES = [
         tileDirection.N,
         tileDirection.E,
         tileDirection.S,
         tileDirection.W,
     ]
 
+    CHARS = {
+        'C': tileEdge.CITY,
+        'R': tileEdge.ROAD,
+        'F': tileEdge.FIELD,
+        'M': tileEdge.MONASTERY,
+        'r': tileEdge.RIVER,
+    }
+
     def __init__(self, img: str, edges: dict[tileDirection, tileEdge]):
-        self.rotation = 0
         self.img: str = img
         self.edges = edges
         self.playerId: str = None
 
     def to_dict(self) -> dict:
         return {
-            "rotation": self.rotation,
-            #"edges": [self.edge(k) for k, v in self.edges.items()],
-            #{f"{x},{y}": v.to_dict() for (x, y), v in self.tiles.items()}
             "playerId": self.playerId,
         }
 
     @classmethod
     def from_dict(self, data: dict):
-        edges = {
-            tileDirection[k]: tileEdge[v] for k, v in data["edges"].items()
-        }
+        raw = data["edges"]
 
-        return self(data["img"], edges)
+        if isinstance(raw, str):
+            
+            if len(raw) != 4:
+                raise ValueError("edges string must be 4 characters in NESW order")
 
-    def rotate(self):
-        self.rotation = (self.rotation + self.ANGLE_STEP) % 360
+            edges = {
+                tileDirection.N: self.CHARS[raw[0]],
+                tileDirection.E: self.CHARS[raw[1]],
+                tileDirection.S: self.CHARS[raw[2]],
+                tileDirection.W: self.CHARS[raw[3]],
+            }
+        else:
+            edges = {tileDirection[k]: tileEdge[v] for k, v in raw.items()}
 
-        return self.rotation
+        return self(data.get("img", ""), edges)
 
-    def edge(self, direction: tileDirection) -> tileEdge:
-        steps = (self.rotation // self.ANGLE_STEP) % len(self.DIRECTIONS)
+    def edge(self, direction: tileDirection, rotation: tileRotation = tileRotation.R0) -> tileEdge:
+        steps = (rotation.value // self.ANGLE_STEP) % len(self.EDGES)
 
-        if direction not in self.DIRECTIONS:
+        if direction not in self.EDGES:
             return self.edges[direction]  # center or special
 
-        idx = self.DIRECTIONS.index(direction)
-        direction =  self.DIRECTIONS[(idx - steps) % len(self.DIRECTIONS)]
+        idx = self.EDGES.index(direction)
+        direction = self.EDGES[(idx - steps) % len(self.EDGES)]
 
         return self.edges[direction]
     
+    def anyEdge(self, edge: tileEdge) -> bool:
+        return any(self.edges[d] == edge for d in self.EDGES)
+
     def edgeName(self, direction: tileDirection) -> tileEdge:
         
         edge = self.edge(direction)
@@ -67,4 +81,4 @@ class tile:
         self.playerId = player.id
 
     def __repr__(self) -> str:
-        return f"rotation={self.rotation}, edges={self.edges} , playerId={self.playerId}"
+        return f"edges={self.edges} , playerId={self.playerId}"

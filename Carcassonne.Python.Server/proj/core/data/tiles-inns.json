@@ -1,0 +1,20 @@
+[
+    { "img": "inns_cathedrals_1.png", "edges": "FCCC" },
+    { "img": "inns_cathedrals_2.png", "edges": "FFRR" },
+    { "img": "inns_cathedrals_3.png", "edges": "RRRR" },
+    { "img": "inns_cathedrals_4.png", "edges": "RCRC" },
+    { "img": "inns_cathedrals_5.png", "edges": "CCCC" },
+    { "img": "inns_cathedrals_6.png", "edges": "CCCC" },
+    { "img": "inns_cathedrals_7.png", "edges": "CCFC" },
+    { "img": "inns_cathedrals_8.png", "edges": "CCCC" },
+    { "img": "inns_cathedrals_9.png", "edges": "FRFR" },
+    { "img": "inns_cathedrals_10.png", "edges": "FRFC" },
+    { "img": "inns_cathedrals_11.png", "edges": "CRFC" },
+    { "img": "inns_cathedrals_12.png", "edges": "CCFR" },
+    { "img": "inns_cathedrals_13.png", "edges": "FFCF" },
+    { "img": "inns_cathedrals_14.png", "edges": "RCCR" },
+    { "img": "inns_cathedrals_15.png", "edges": "RFCF" },
+    { "img": "inns_cathedrals_16.png", "edges": "RCRC" },
+    { "img": "inns_cathedrals_17.png", "edges": "FRFR" },
+    { "img": "inns_cathedrals_18.png", "edges": "FRRR" }
+]

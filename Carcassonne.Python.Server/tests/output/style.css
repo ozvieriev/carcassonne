@@ -8,8 +8,8 @@
     position: absolute;
     width: 75px;
     height: 75px;
-    border: 1px solid black;
     display: inline-block;
+    background-color: rgb(236, 231, 231);
 }
 
 .board .tile img {

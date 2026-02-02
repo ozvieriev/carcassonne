@@ -6,3 +6,4 @@ class tileEdge(Enum):
     ROAD = "ROAD"
     FIELD = "FIELD"
     MONASTERY = "MONASTERY"
+    RIVER = "RIVER"

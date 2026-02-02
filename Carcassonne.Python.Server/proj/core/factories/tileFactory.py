@@ -1,5 +1,6 @@
 from ..models import *
-import json, random
+import json
+import random
 
 
 class tileFactory:
@@ -9,19 +10,34 @@ class tileFactory:
             tileDirection.N: north,
             tileDirection.E: east,
             tileDirection.S: south,
-            tileDirection.W: west,
-            tileDirection.C: center
+            tileDirection.W: west
         }
 
-        return tile("",edges)
+        return tile("", edges)
 
     @staticmethod
-    def loadFromMap(path: str = "proj/core/data/tiles.json"):
+    def loadFromMap():
+        river = []
+        base = []
+        abbot = []
+        inns = []
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        def append(path: str, tiles: list):
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
 
-        tiles = [tile.from_dict(item) for item in data]
-        #random.shuffle(tiles)
+            for entry in data:
+                tiles.append(tile.from_dict(entry))
+
+        append("proj/core/data/tiles-river.json", river)
+        append("proj/core/data/tiles-base.json", base)
+        append("proj/core/data/tiles-abbot.json", abbot)
+        append("proj/core/data/tiles-inns.json", inns)
+
+        random.shuffle(base)
+        random.shuffle(abbot)
+        random.shuffle(inns)
+
+        tiles = river + base + abbot + inns
 
         return tiles

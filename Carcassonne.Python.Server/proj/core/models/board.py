@@ -22,6 +22,7 @@ except Exception:
 
 class board:
     def __init__(self, players: list[player], tiles: list[tile]):
+        self.skippedTiles: list[tile] = []
         self.players: list[player] = players
         self.tiles: list[tile] = tiles
         self.moves: Dict[Tuple[int, int], move] = {}
@@ -56,7 +57,7 @@ class board:
             return self.players[0]
 
         move = list(self.moves.values())[-1]
-        
+
         index = indexOf(self.players,
                          lambda entity: entity.id == move.playerId)
 
@@ -66,22 +67,33 @@ class board:
         if not self.tiles:
             return None
 
-        index = len(self.moves)
+        index = len(self.moves) + len(self.skippedTiles)
 
         if (index >= len(self.tiles)):
             return None
 
-        return self.tiles[index]
+        tile = self.tiles[index]
+
+        if (tile is None):
+            return None
+
+        anyAvailable = self.getAnyAvailablePosition(tile)
+
+        if (anyAvailable is None):
+            self.skippedTiles.append(tile)
+            return self.getNextTile()
+
+        return tile
 
     def getMove(self, point: point) -> move | None:
         return self.moves.get((point.x, point.y))
 
     def getTile(self, x: int, y: int) -> tile | None:
         move = self.getMove(point(x, y))
-        
+
         return move.tile if move else None
 
-    def canPlaceTile(self, x: int, y: int, tile: tile) -> bool:
+    def canPlaceTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
         if (not self.moves):
             return True
 
@@ -90,43 +102,78 @@ class board:
         if move is not None:
             return False
 
-        for direction, (nx, ny), opposite in self.getNeighbors(x, y):
-            neighbor = self.getTile(nx, ny)
+        tileHasRiver = tile.anyEdge(tileEdge.RIVER)
 
-            if neighbor is None:
+        for direction, (nx, ny), opposite in self.getNeighbors(x, y):
+            neighborMove = self.getMove(point(nx, ny))
+
+            if neighborMove is None:
                 continue
 
-            edge = tile.edge(direction)
-            neighborEdge = neighbor.edge(opposite)
+            edge = tile.edge(direction, rotation)
+            neighborEdge = neighborMove.tile.edge(
+                opposite, neighborMove.rotation)
+
+            if tileHasRiver:
+                neighborHasriver = neighborMove.tile.anyEdge(tileEdge.RIVER)
+
+                if tileHasRiver or neighborHasriver:
+                    if not (edge == tileEdge.RIVER and neighborEdge == tileEdge.RIVER):
+                        return False
 
             if edge != neighborEdge:
                 return False
 
         return True
 
-    def placeTile(self, x: int, y: int, tile: tile) -> bool:
-        if not self.canPlaceTile(x, y, tile):
+    def placeTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
+        if not self.canPlaceTile(x, y, tile, rotation):
             return False
 
         player = self.getCurrentPlayer()
 
         tile.setPlayer(player)
-        self.moves[(x, y)] = move(player, tile, point(x, y), tile.rotation)
+        self.moves[(x, y)] = move(player, tile, point(x, y), rotation)
 
         return True
 
-    def getAvailablePositions(self) -> list[tuple[int, int]]:
+    def getAnyAvailablePosition(self, tile: tile) -> tuple[int, int] | None:
+        if not self.moves:
+            return (0, 0)
+
+        rotations = list(tileRotation)
+
+        for (x, y) in self.moves.keys():
+            for _, (nx, ny), _ in self.getNeighbors(x, y):
+                if (nx, ny) in self.moves:
+                    continue
+
+                for rotation in rotations:
+                    if self.canPlaceTile(nx, ny, tile, rotation):
+                        return (nx, ny)
+
+        return None
+
+
+    def getAvailablePositions(self, tile: tile) -> list[tuple[int, int]]:
         positions = set()
 
         if not self.moves:
             return [(0, 0)]
 
+        rotations = list(tileRotation)
+
         for (x, y) in self.moves.keys():
             for _, (nx, ny), _ in self.getNeighbors(x, y):
-                if (nx, ny) not in self.moves:
-                    positions.add((nx, ny))
+                if (nx, ny) in self.moves:
+                    continue
 
-        return positions
+                for rotation in rotations:
+                    if self.canPlaceTile(nx, ny, tile, rotation):
+                        positions.add((nx, ny))
+                        break
+
+        return list(positions)
 
     def getNeighbors(self, x: int, y: int):
         yield (tileDirection.N, (x, y - 1), tileDirection.S)
