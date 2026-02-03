@@ -115,9 +115,9 @@ class board:
                 opposite, neighborMove.rotation)
 
             if tileHasRiver:
-                neighborHasriver = neighborMove.tile.anyEdge(tileEdge.RIVER)
+                neighborHasRiver = neighborMove.tile.anyEdge(tileEdge.RIVER)
 
-                if tileHasRiver or neighborHasriver:
+                if neighborHasRiver:
                     if not (edge == tileEdge.RIVER and neighborEdge == tileEdge.RIVER):
                         return False
 

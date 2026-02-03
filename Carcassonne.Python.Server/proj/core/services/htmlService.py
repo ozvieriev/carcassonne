@@ -6,11 +6,16 @@ class htmlService:
     def __init__(self):
         pass
 
-    def renderTemplate(self, data: dict) -> str:
-        loader = loader = FileSystemLoader("proj/core/resources")
+    def createEnvironment(self) -> Environment:
+        loader = FileSystemLoader("proj/core/resources")
         env = Environment(loader=loader)
+        
+        return env
 
-        template = env.get_template("template.html")
+    def renderTemplate(self, data: dict, templateName: str = "template") -> str:
+        env = self.createEnvironment()
+        template = env.get_template(f"{templateName}.html")
+        
         return template.render(data)
     
     def saveToFile(self, name: str, html: str):

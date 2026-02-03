@@ -30,6 +30,7 @@ class tile:
 
     def to_dict(self) -> dict:
         return {
+            "img": self.img,
             "playerId": self.playerId,
         }
 

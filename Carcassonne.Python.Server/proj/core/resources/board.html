@@ -1,0 +1,7 @@
+<div class="board">
+    {% for move in moves %}
+    <div class="tile r-{{move.rotation.value}}" style="grid-column: {{move.location.x + offsetX}};grid-row: {{move.location.y + offsetY}}">
+        <img src="tiles/{{move.tile.img}}">
+    </div>
+    {% endfor %}
+</div>

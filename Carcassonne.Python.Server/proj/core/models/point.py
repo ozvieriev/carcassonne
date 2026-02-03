@@ -8,6 +8,12 @@ class point:
         self.x = x
         self.y = y
 
+    def to_dict(self) -> dict:
+        return {
+            "x": self.x,
+            "y": self.y
+        }
+
     def neighbors(self) -> Iterable["point"]:
         yield point(self.x, self.y - 1)
         yield point(self.x + 1, self.y)
