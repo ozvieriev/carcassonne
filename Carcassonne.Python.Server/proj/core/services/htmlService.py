@@ -12,7 +12,7 @@ class htmlService:
         
         return env
 
-    def renderTemplate(self, data: dict, templateName: str = "template") -> str:
+    def renderTemplate(self, data: dict, templateName: str) -> str:
         env = self.createEnvironment()
         template = env.get_template(f"{templateName}.html")
         

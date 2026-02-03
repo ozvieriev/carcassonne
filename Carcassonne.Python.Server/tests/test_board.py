@@ -78,8 +78,8 @@ def testAvailablePositions(request):
     while (t := b.getNextTile()) is not None:
         placed = False
         positions = b.getAvailablePositions(t)
-        htmlS.saveToFile(request.node.name, r.toHtml(t))  
-          
+        #htmlS.saveToFile(request.node.name, r.toHtml(t))  
+
         if len(positions) == 0:
            assert False, "No available positions to place tile" #TODO
 
@@ -92,9 +92,9 @@ def testAvailablePositions(request):
                 if rotation == tileRotation.R0:
                     break
 
-            if (placed):
-                htmlS.saveToFile(request.node.name, r.toHtml())
-                break
+            # if (placed):
+            #     htmlS.saveToFile(request.node.name, r.toHtml())
+            #     break
 
     s = r.toJson()
 

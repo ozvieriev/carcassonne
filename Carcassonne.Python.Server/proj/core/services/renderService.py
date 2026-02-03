@@ -1,6 +1,6 @@
 from ..models import *
 from .htmlService import *
-
+from math import *
 
 class renderService:
     def __init__(self, b: board, h: htmlService = htmlService()):
@@ -8,17 +8,29 @@ class renderService:
         self.htmlService: htmlService = h
 
     def toHtml(self, nextTile: tile = None) -> str:
+
+        xs = [x for (x, y) in self.board.moves.keys()]
+        ys = [y for (x, y) in self.board.moves.keys()]
+
+        minX = min(xs, default=0)
+        maxX = max(xs, default=0)
+
+        minY = min(ys, default=0)
+        maxY = max(ys, default=0)
+
+        cols = maxX - minX + 3
+        rows = maxY - minY + 3
+
         html = self.htmlService.renderTemplate({
-            "offsetX": 30,
-            "offsetY": 30,
-            "moves": self.board.moves.values()
+            "offsetX": 2 - minX,
+            "offsetY": 2 - minY,
+            "cols": cols,
+            "rows": rows,
+            "moves": self.board.moves.values(),
+            "players": self.board.getPlayers()
         }, templateName="board")
 
-        return self.htmlService.renderTemplate({"body": html}, templateName="template")
+        return html
 
     def toJson(self) -> str:
         return json.dumps(self.board.to_dict())
-
-    def getHtmlTemplate() -> str:
-        with open("file.html", "r", encoding="utf-8") as f:
-            return f.read()
