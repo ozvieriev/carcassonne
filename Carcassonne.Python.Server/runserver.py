@@ -1,7 +1,7 @@
 import uvicorn
 from os import environ
 from proj.api.settings import config
-frgom proj.core.models import *
+from proj.core.models import *
 
 if __name__ == '__main__':
     # target the FastAPI app defined in proj.api (app variable)

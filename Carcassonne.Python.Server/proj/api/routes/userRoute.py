@@ -1,12 +1,15 @@
 from datetime import datetime
 from fastapi import Depends, HTTPException
 
+from proj.api.models import *
+from proj.api.services import *
+
 from . import router, createUserService
-from ..services.userService import userService
+
 
 @router.get("/user/{userId}")
 def get_user(userId: int, service: userService = Depends(createUserService)):
-    user = service.get(userId)
+    user = userModel()  # service.get(userId)
 
     print(f"/user/{userId}")
 
@@ -14,4 +17,3 @@ def get_user(userId: int, service: userService = Depends(createUserService)):
         raise HTTPException(status_code=404, detail="user not found")
 
     return user
-

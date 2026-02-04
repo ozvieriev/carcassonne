@@ -1,0 +1,13 @@
+services:
+  sql-dev:
+    container_name: sql-carcassonne-dev
+    ports:
+      - 1434:1433
+    image: optimizely/sql
+    env_file:
+      - .env
+    build:
+      context: .
+    volumes:
+      - ./db:/backups
+ 

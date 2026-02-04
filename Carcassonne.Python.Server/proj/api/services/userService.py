@@ -5,4 +5,4 @@ class userService:
     def __init__(self, repository: userRepository):
         self.repository = repository
 
-    get = lambda self, id: self.repository.get(id)
+    def get(self, id): return self.repository.get(id)

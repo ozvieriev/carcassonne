@@ -1,7 +1,7 @@
 from fastapi import Depends
 
 from ..db import getDb
-from ..models import userModel
+from ..models import *
 
 
 class userRepository:

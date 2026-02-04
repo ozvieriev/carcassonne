@@ -26,12 +26,12 @@ class tile:
     def __init__(self, img: str, edges: dict[tileDirection, tileEdge]):
         self.img: str = img
         self.edges = edges
-        self.playerId: str = None
 
     def to_dict(self) -> dict:
+
         return {
             "img": self.img,
-            "playerId": self.playerId,
+            "edges": {d.name: e.name for d, e in self.edges.items()}
         }
 
     @classmethod
@@ -75,11 +75,7 @@ class tile:
         if(edge is not None):
             return edge.name[0]
         
-        return None 
-
-    def setPlayer(self, player: player) -> None:
-        """Set the current player"""
-        self.playerId = player.id
+        return None
 
     def __repr__(self) -> str:
-        return f"edges={self.edges} , playerId={self.playerId}"
+        return f"edges={self.edges}"

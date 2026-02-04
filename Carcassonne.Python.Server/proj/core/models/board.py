@@ -49,7 +49,7 @@ class board:
     def getPlayers(self) -> list[player]:
         return list(self.players)
 
-    def getCurrentPlayer(self) -> Optional[player]:
+    def getCurrentPlayer(self) -> player | None:
         if not self.players:
             return None
 
@@ -60,6 +60,19 @@ class board:
 
         index = indexOf(self.players,
                          lambda entity: entity.id == move.playerId)
+
+        return nextItem(self.players, index)
+
+    def getNextPlayer(self) -> player | None:
+        if not self.players:
+            return None
+
+        current = self.getCurrentPlayer()
+        
+        if current is None:
+            return nextItem(self.players, 0)
+
+        index = indexOf(self.players, lambda entity: entity.id == current.id)
 
         return nextItem(self.players, index)
 
@@ -132,7 +145,6 @@ class board:
 
         player = self.getCurrentPlayer()
 
-        tile.setPlayer(player)
         self.moves[(x, y)] = move(player, tile, point(x, y), rotation)
 
         return True
