@@ -1,8 +1,6 @@
 from typing import Dict, Set, List
 from fastapi import WebSocket
 import logging
-import random
-
 
 logger = logging.getLogger(__name__)
 
@@ -11,50 +9,48 @@ class ConnectionManager:
     """Manage websocket connections per game room."""
 
     def __init__(self):
-        self.id = random.randint(0, 10000)
         self.connections: Dict[str, Set[WebSocket]] = {}
 
     async def connect(self, websocket: WebSocket, gameId: str):
         await websocket.accept()
-        newConnection = self.connections.setdefault(gameId, set())
-        newConnection.add(websocket)
 
-        targets = self.connections.get(gameId, [])
+        connection = self.connections.setdefault(gameId, set())
+        connection.add(websocket)
 
-        await websocket.send_json({"type": "connected", "id": self.id, "gameId": gameId})
+        await websocket.send_json({"type": "connect", "gameId": gameId})
 
     def disconnect(self, websocket: WebSocket, gameId: str):
-        gameConnection = self.connections.get(gameId)
+        connection = self.connections.get(gameId)
 
-        if not gameConnection:
+        if not connection:
             return
 
-        gameConnection.discard(websocket)
+        connection.discard(websocket)
 
-        logger.info("WebSocket disconnected: game=%s, remaining=%d",
-                    gameId, len(gameConnection))
+        logger.info(
+            f"WebSocket disconnected: game={gameId}, remaining={len(connection)}")
 
-        if len(gameConnection) == 0:
+        if len(connection) == 0:
             del self.connections[gameId]
 
-    async def send_personal_message(self, message: object, websocket: WebSocket):
+    async def personal(self, message: object, websocket: WebSocket):
         await websocket.send_json(message)
 
     async def broadcast(self, message: object, gameId: str):
-        targets: List[WebSocket] = []
+        webSockets: List[WebSocket] = []
 
         if gameId is not None:
-            targets = list(self.connections.get(gameId, []))
-            
-        logger.info("Broadcasting message to %d clients for game %s",
-                    len(targets), gameId)
+            webSockets = list(self.connections.get(gameId, []))
 
-        for connection in targets:
+        logger.info("Broadcasting message to %d clients for game %s",
+                    len(webSockets), gameId)
+
+        for websocket in webSockets:
             try:
-                await connection.send_json(message)
+                await websocket.send_json(message)
             except Exception:
                 logger.exception(
-                    "Failed to send websocket message to a client in game %s", gameId)
+                    f"Failed to send websocket message to a client in game {gameId}")
 
 
 manager = ConnectionManager()

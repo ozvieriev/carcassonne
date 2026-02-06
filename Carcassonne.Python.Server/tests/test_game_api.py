@@ -1,4 +1,5 @@
 from datetime import datetime
+import webbrowser
 
 import requests
 from proj.api.models import gamePlaceTileRequest
@@ -31,6 +32,9 @@ def testPlay(request):
 
     d = dict(json)
     gameId = d.get("id", "")
+    
+    webbrowser.open(BASE_URL + "/?gameId=" + gameId)
+    
     dataNextTile = d.get("nextTile", {})
     dataAvailablePositions = d.get("availablePositions", [])
 

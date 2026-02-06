@@ -1,7 +1,4 @@
 (function ($) {
-
-
-    
     $(function () {
         var $board = $('.board');
             var isDown = false;

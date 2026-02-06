@@ -71,13 +71,19 @@ async def putGamePlaceTile(gameId: str, request: gamePlaceTileRequest, service: 
 
 
 @router.websocket("/ws/{gameId}")
-async def websocket_endpoint(*, websocket: WebSocket, gameId: str):
+async def websocket_endpoint(*, websocket: WebSocket, gameId: str, service: gameService = Depends(createGameService)):
     """Simple websocket endpoint to subscribe to game updates.
 
     Clients should connect to `/ws/{gameId}`. The server will accept the connection
     and send JSON messages when the board changes (for example, when a tile is placed).
     The endpoint echoes received text as an acknowledgement; it's tolerant to disconnects.
     """
+
+    game = service.getGame(gameId)
+
+    if not game:
+        raise HTTPException(status_code=404, detail="not found")
+
     await manager.connect(websocket, gameId)
 
     try:
