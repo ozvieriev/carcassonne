@@ -1,4 +1,7 @@
-from fastapi import Depends, HTTPException
+from urllib import response
+from fastapi import Depends, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi.encoders import jsonable_encoder
+import json
 
 from proj.api.models import *
 from proj.core.utils import *
@@ -6,6 +9,7 @@ from proj.core.factories import *
 from proj.core.models import *
 from . import createGameService, router
 from ..services import *
+from proj.api.ws import manager
 
 
 @router.put("/game/")
@@ -38,7 +42,7 @@ def getGame(gameId: str, service: gameService = Depends(createGameService)):
 
 
 @router.put("/game/{gameId}/placeTile", )
-def putGamePlaceTile(gameId: str, request: gamePlaceTileRequest, service: gameService = Depends(createGameService)):
+async def putGamePlaceTile(gameId: str, request: gamePlaceTileRequest, service: gameService = Depends(createGameService)):
     game = service.getGame(gameId)
 
     if not game:
@@ -56,4 +60,30 @@ def putGamePlaceTile(gameId: str, request: gamePlaceTileRequest, service: gameSe
     game.model = json.dumps(b.to_dict())
     game = service.update(game)
 
-    return gameApiModel.createInstance(game, b)
+    response = gameApiModel.createInstance(game, b)
+
+    message = jsonable_encoder(response)
+    message["type"] = "placeTile"
+
+    await manager.broadcast(message, gameId)
+
+    return response
+
+
+@router.websocket("/ws/{gameId}")
+async def websocket_endpoint(*, websocket: WebSocket, gameId: str):
+    """Simple websocket endpoint to subscribe to game updates.
+
+    Clients should connect to `/ws/{gameId}`. The server will accept the connection
+    and send JSON messages when the board changes (for example, when a tile is placed).
+    The endpoint echoes received text as an acknowledgement; it's tolerant to disconnects.
+    """
+    await manager.connect(websocket, gameId)
+
+    try:
+        while True:
+            data = await websocket.receive_text()
+
+            await manager.send_personal_message({"type": "ack", "data": data}, websocket)
+    except WebSocketDisconnect:
+        manager.disconnect(websocket, gameId)

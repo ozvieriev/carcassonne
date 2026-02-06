@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Carcassonne UI Demo</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script defer src="/static/app.js"></script>
+</head>
+<body>
+  <main class="container">
+    <h1>Carcassonne - UI Demo</h1>
+
+    <section class="controls">
+      <button id="createGame">Create game (PUT /game/)</button>
+      <input id="gameId" placeholder="game id" />
+      <button id="connectWs">Connect WebSocket</button>
+      <button id="placeNext">Place next tile (first available)</button>
+    </section>
+
+    <section>
+      <h2>Game info</h2>
+      <pre id="gameInfo">(no game)</pre>
+    </section>
+
+    <section>
+      <h2>WebSocket log</h2>
+      <div id="log" class="log"></div>
+    </section>
+  </main>
+</body>
+</html>

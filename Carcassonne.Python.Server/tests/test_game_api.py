@@ -19,7 +19,8 @@ def post(path, **kwargs):
     return client.post(path, **kwargs)
 
 def put(path, **kwargs):
-    return client.put(path, **kwargs)
+    return requests.put(BASE_URL + path, **kwargs)
+    #return client.put(path, **kwargs)
 
 def testPlay(request):
     
@@ -44,10 +45,11 @@ def testPlay(request):
 
             while True :
                 try:
-                    response = put(f"/game/{gameId}/placeTile", json={
+                    request = {
                         "location": position.to_dict(),
                         "rotation": rotation.value
-                    })
+                    }
+                    response = put(f"/game/{gameId}/placeTile", json=request)
 
                     if(response.status_code == 200):
                         json = response.json()
