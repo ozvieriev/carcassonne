@@ -32,8 +32,6 @@ class tileFactory:
         append("proj/core/data/tiles-river.json", river)
         append("proj/core/data/tiles-base.json", base)
         append("proj/core/data/tiles-abbot.json", abbot)
-        append("proj/core/data/tiles-inns.json", inns)
-
         random.shuffle(base)
         random.shuffle(abbot)
         random.shuffle(inns)

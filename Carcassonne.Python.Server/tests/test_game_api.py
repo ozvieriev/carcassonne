@@ -1,54 +1,73 @@
+from datetime import datetime
+
 import requests
+from proj.api.models import gamePlaceTileRequest
 from proj.core.factories import *
 from proj.core.services import *
 from proj.core.models import *
 from proj.core.enums import *
-from proj.core.factories.playerFactory import playerFactory
-from time import sleep
+from fastapi.testclient import TestClient
+from proj.api import app
 
+BASE_URL = "http://localhost:8000"
+client = TestClient(app)
+
+def get(path, **kwargs):
+    return client.get(path, **kwargs)
+
+def post(path, **kwargs):
+    return client.post(path, **kwargs)
+
+def put(path, **kwargs):
+    return client.put(path, **kwargs)
 
 def testPlay(request):
-
-    response = requests.put("http://localhost:8000/game/")
+    
+    response = put("/game/")
     assert response.status_code == 200
 
     json = response.json()
-    aa = 1
 
-    # players = playerFactory.loadFromMap()
-    # b = board(players, tileFactory.loadFromMap())
-    # r = renderService(b)
-    # htmlS = htmlService()
+    d = dict(json)
+    gameId = d.get("id", "")
+    dataNextTile = d.get("nextTile", {})
+    dataAvailablePositions = d.get("availablePositions", [])
 
-    # t = b.getNextTile()
-    # assert b.placeTile(0, 0, t)
+    while(t := tile.from_dict(dataNextTile) if dataNextTile is not None else None) is not None:
+        positions = [point.from_dict(p) for p in dataAvailablePositions]
 
-    # while (t := b.getNextTile()) is not None:
-    #     placed = False
-    #     positions = b.getAvailablePositions(t)
-    #     # htmlS.saveToFile(request.node.name, r.toHtml(t))
+        if len(positions) == 0:
+            assert False, "No available positions to place tile" #TODO
 
-    #     if len(positions) == 0:
-    #         assert False, "No available positions to place tile"  # TODO
+        for position in positions:
+            rotation = tileRotation.R0
 
-    #     for position in positions:
-    #         rotation = tileRotation.R0
+            while True :
+                try:
+                    response = put(f"/game/{gameId}/placeTile", json={
+                        "location": position.to_dict(),
+                        "rotation": rotation.value
+                    })
 
-    #         while (placed := b.placeTile(position[0], position[1], t, rotation)) is False:
-    #             rotation = rotation.rotate()
+                    if(response.status_code == 200):
+                        json = response.json()
 
-    #             if rotation == tileRotation.R0:
-    #                 break
+                        d = dict(json)
 
-    #         # if (placed):
-    #         #     htmlS.saveToFile(request.node.name, r.toHtml())
-    #         #     break
+                        dataNextTile = d.get("nextTile", {})
+                        dataAvailablePositions = d.get("availablePositions", [])
+                    else:
+                        pass
 
-    # s = r.toJson()
+                finally:
+                    pass
 
-    # assert 'players' in s
+                rotation = rotation.rotate()
 
-    # with open("proj/core/data/output/board.json", "w") as write:
-    #     json.dump(b.to_dict(), write, indent=4, ensure_ascii=False)
+                if rotation == tileRotation.R0 or response.status_code == 200:
+                    break
+            
+            if rotation == tileRotation.R0 or response.status_code == 200:
+                break
+                
 
-    # htmlS.saveToFile(request.node.name, r.toHtml())

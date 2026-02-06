@@ -24,13 +24,9 @@ class gameRepository:
 
         return game
 
-    def updateModel(self, id: int, model: str) -> gameModel | None:
-        game = self.get(id)
-
+    def updateModel(self, game: gameModel) -> gameModel | None:
         if game is None:
             return None
-
-        game.model = model
 
         self.db.add(game)
         self.db.commit()

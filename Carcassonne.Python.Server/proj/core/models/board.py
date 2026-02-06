@@ -29,9 +29,33 @@ class board:
 
     def to_dict(self) -> dict:
         return {
-            # "moves": {f"{x},{y}": v.to_dict() for (x, y), v in self.moves.items()},
-            "players": [player.to_dict() for player in self.players]
+            "skippedTiles": [tile.to_dict() for tile in self.skippedTiles],
+            "players": [player.to_dict() for player in self.players],
+            "tiles": [tile.to_dict() for tile in self.tiles],
+            "moves": [v.to_dict() for (x, y), v in self.moves.items()]
         }
+
+    @classmethod
+    def from_dict(self, data: dict) -> "board":
+        dataSkippedTiles = data.get("skippedTiles", [])
+        dataPlayers = data.get("players", [])
+        dataTiles = data.get("tiles", [])
+        dataMoves = data.get("moves", [])
+
+        players = [player.from_dict(p) for p in dataPlayers]
+        tiles = [tile.from_dict(t) for t in dataTiles]
+
+        b = self(players, tiles)
+        b.skippedTiles = [tile.from_dict(t) for t in dataSkippedTiles]
+        b.moves = {}
+
+        for mv in dataMoves:
+            moveObj = move.from_dict(mv)
+            x = moveObj.location.x
+            y = moveObj.location.y
+            b.moves[(x, y)] = moveObj
+
+        return b
 
     def addPlayer(self, player: player) -> None:
         """Add a player to the game in turn order."""
@@ -59,7 +83,7 @@ class board:
         move = list(self.moves.values())[-1]
 
         index = indexOf(self.players,
-                         lambda entity: entity.id == move.playerId)
+                        lambda entity: entity.id == move.playerId)
 
         return nextItem(self.players, index)
 
@@ -68,7 +92,7 @@ class board:
             return None
 
         current = self.getCurrentPlayer()
-        
+
         if current is None:
             return nextItem(self.players, 0)
 
@@ -166,8 +190,7 @@ class board:
 
         return None
 
-
-    def getAvailablePositions(self, tile: tile) -> list[tuple[int, int]]:
+    def getAvailablePositions(self, tile: tile) -> list[point]:
         positions = set()
 
         if not self.moves:
@@ -182,7 +205,7 @@ class board:
 
                 for rotation in rotations:
                     if self.canPlaceTile(nx, ny, tile, rotation):
-                        positions.add((nx, ny))
+                        positions.add(point(nx, ny))
                         break
 
         return list(positions)
