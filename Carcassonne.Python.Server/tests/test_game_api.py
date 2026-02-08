@@ -33,7 +33,7 @@ def testPlay(request):
     d = dict(json)
     gameId = d.get("id", "")
     
-    webbrowser.open(BASE_URL + "/?gameId=" + gameId)
+    webbrowser.open(BASE_URL + f"/#!/en/game/{gameId}")
     
     dataNextTile = d.get("nextTile", {})
     dataAvailablePositions = d.get("availablePositions", [])

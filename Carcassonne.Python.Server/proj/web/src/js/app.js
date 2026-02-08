@@ -1,4 +1,3 @@
-
 (function ($) {
 
     let ws = null;
