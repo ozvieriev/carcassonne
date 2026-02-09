@@ -34,9 +34,7 @@ def getGame(gameId: str, service: gameService = Depends(createGameService)):
     if not game:
         raise HTTPException(status_code=404, detail="not found")
 
-    players = playerFactory.loadFromMap()
-    tiles = tileFactory.loadFromMap()
-    b = board(players, tiles)
+    b = board.from_dict(json.loads(game.model))
 
     return gameApiModel.createInstance(game, b)
 

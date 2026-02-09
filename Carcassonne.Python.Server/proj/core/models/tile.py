@@ -1,9 +1,6 @@
 from ..enums import *
-from .player import player
-from dataclasses import dataclass
 from typing import Optional
 
-@dataclass
 class tile:
 
     ANGLE_STEP = 90

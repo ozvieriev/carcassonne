@@ -13,18 +13,22 @@ from proj.api import app
 BASE_URL = "http://localhost:8000"
 client = TestClient(app)
 
+
 def get(path, **kwargs):
     return client.get(path, **kwargs)
+
 
 def post(path, **kwargs):
     return client.post(path, **kwargs)
 
+
 def put(path, **kwargs):
     return requests.put(BASE_URL + path, **kwargs)
-    #return client.put(path, **kwargs)
+    # return client.put(path, **kwargs)
+
 
 def testPlay(request):
-    
+
     response = put("/game/")
     assert response.status_code == 200
 
@@ -32,22 +36,23 @@ def testPlay(request):
 
     d = dict(json)
     gameId = d.get("id", "")
-    
+
     webbrowser.open(BASE_URL + f"/#!/en/game/{gameId}")
     
     dataNextTile = d.get("nextTile", {})
     dataAvailablePositions = d.get("availablePositions", [])
 
-    while(t := tile.from_dict(dataNextTile) if dataNextTile is not None else None) is not None:
+    index = 0
+    while (t := tile.from_dict(dataNextTile) if dataNextTile is not None else None) is not None:
         positions = [point.from_dict(p) for p in dataAvailablePositions]
 
         if len(positions) == 0:
-            assert False, "No available positions to place tile" #TODO
+            assert False, "No available positions to place tile"  # TODO
 
         for position in positions:
             rotation = tileRotation.R0
 
-            while True :
+            while True:
                 try:
                     request = {
                         "location": position.to_dict(),
@@ -55,13 +60,19 @@ def testPlay(request):
                     }
                     response = put(f"/game/{gameId}/placeTile", json=request)
 
-                    if(response.status_code == 200):
+                    if (response.status_code == 200):
+                        index += 1
+
+                        if (index > 999):
+                            return
+
                         json = response.json()
 
                         d = dict(json)
 
                         dataNextTile = d.get("nextTile", {})
-                        dataAvailablePositions = d.get("availablePositions", [])
+                        dataAvailablePositions = d.get(
+                            "availablePositions", [])
                     else:
                         pass
 

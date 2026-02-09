@@ -1,11 +1,7 @@
-const gulp = require('gulp');
+const { src, dest, task, parallel, series } = require('gulp');
 
-gulp.task('img:img', () => {
-
-    return gulp.src('src/img/**/*.png')
-        .pipe(gulp.dest('dist/img'))
+task('img:tiles', () => {
+    return src(['src/img/tiles/*.*'], { encoding: false })
+        .pipe(dest('dist/img/tiles'))
 });
-gulp.task('img:app:watch', () => {
-    return gulp.watch('src/img/**/*.png', gulp.series('img:img'));
-});
-gulp.task('img', gulp.parallel('img:img'));
+task('img', series(parallel('img:tiles')));

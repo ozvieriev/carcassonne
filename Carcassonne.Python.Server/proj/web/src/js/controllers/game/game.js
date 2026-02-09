@@ -3,44 +3,89 @@ angular.module('app.controllers').controller('gameController',
 
         let ws = null;
 
-        $scope.game = null;
-        $scope.gameHubConnection = null;
-        $scope.gameHubConnectionStart = null;
+        $scope.board = {
+            size: { width: 0, height: 0 },
+            offset: { x: 0, y: 0 },
+            nextTile: null,
+            moves: []
+        };
 
         $scope.joinGame = () => {
 
 
         };
 
+        let safeApply = (fn) => {
+
+            $scope.$$phase ? fn() : $scope.$apply(fn);
+        }
+
+        let apply = (response) => {
+
+
+            if (response.moves) {
+                calculateOffset(response.moves, response.availablePositions);
+                $scope.board.moves = response.moves;
+                $scope.board.availablePositions = response.availablePositions || [];
+            }
+            
+            $scope.board.nextTile = response.nextTile;
+        }
+
+        let calculateOffset = (moves, availablePositions) => {
+
+            if (!moves.length)
+                return;
+
+            availablePositions = availablePositions || [];
+            
+            const minX = Math.min(...moves.map(move => move.location.x));
+            const maxX = Math.max(...moves.map(move => move.location.x));
+
+            const minY = Math.min(...moves.map(move => move.location.y));
+            const maxY = Math.max(...moves.map(move => move.location.y));
+
+            const x = Math.abs(minX) + Math.abs(maxX) + 1;
+            const y = Math.abs(minY) + Math.abs(maxY) + 1;
+            const borders = 2
+
+            $scope.board.size = {
+                width: x + borders,
+                height: y + borders
+            };
+
+            $scope.board.offset = { x: Math.abs(minX) + borders, y: Math.abs(minY) + borders };
+        }
+
         $scope.onOpen = () => {
             console.log('ws open');
         };
-        $scope.onMessage = (ev) => {
 
+        $scope.onMessage = (ev) => {
             let response = JSON.parse(ev.data);
             let type = response.type;
 
-            switch (type) {
-                case 'placeTile':
-                    $scope.$apply(() => {
-                        $scope.game = response.game;
-                    });
-                    break;
-                default:
-                    console.log('unknown message type', type);
-            }
+            safeApply(function () {
+                switch (type) {
+                    case 'connect': break;
+                    case 'placeTile': apply(response); break;
+                    default: console.log('unknown message type', type);
+                }
+            });
 
         };
+
         $scope.onClose = () => {
             console.log('ws closed');
         };
+
         $scope.onError = () => {
             console.log('ws error', error);
         };
 
         $api.game($stateParams.id)
             .then((response) => {
-                $scope.game = response.data;
+                apply(response.data);
 
                 ws = $api.connect($stateParams.id);
                 ws.onopen = $scope.onOpen;

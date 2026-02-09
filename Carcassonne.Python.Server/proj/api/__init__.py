@@ -19,12 +19,12 @@ TEMPLATES_DIR = PROJ_DIR / "web/dist"
 app = FastAPI(title="Carcassonne", debug=True)
 
 
-app.mount("/js", StaticFiles(directory=str(WEB_DIR / "js")), name="js")
-app.mount("/css", StaticFiles(directory=str(WEB_DIR / "css")), name="css")
-app.mount("/img", StaticFiles(directory=str(WEB_DIR / "img")), name="img")
-app.mount("/partial", StaticFiles(directory=str(WEB_DIR / "partial")), name="partial")
-app.mount("/views", StaticFiles(directory=str(WEB_DIR / "views")), name="views")
-app.mount("/i18n", StaticFiles(directory=str(WEB_DIR / "i18n")), name="i18n")
+app.mount("/js", StaticFiles(directory=str(WEB_DIR / "js")))
+app.mount("/css", StaticFiles(directory=str(WEB_DIR / "css")))
+app.mount("/img", StaticFiles(directory=str(WEB_DIR / "img")))
+app.mount("/partial", StaticFiles(directory=str(WEB_DIR / "partial")))
+app.mount("/views", StaticFiles(directory=str(WEB_DIR / "views")))
+app.mount("/i18n", StaticFiles(directory=str(WEB_DIR / "i18n")))
 		
 templates = Jinja2Templates(directory=str(DIST))
 

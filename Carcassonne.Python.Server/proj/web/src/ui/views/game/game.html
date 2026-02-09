@@ -1,16 +1,7 @@
-<div class="board"
-    style="display: grid; grid-template-columns: repeat(14, 75px); grid-template-rows: repeat(13, 75px); gap: 1px;">
-
-    <div class="tile r-0" style="grid-column: 11; grid-row: 6;">
-        <img src="img/tiles/River_I_C2_Tile_L.png">
-    </div>
-
-    <div class="tile r-0" style="grid-column: 11; grid-row: 5;">
-        <img src="img/tiles/River_III_C2_Tile_E.png">
-    </div>
-
+<div data-ng-if="board.nextTile" class="tile">
+    <img src="img/tiles/{{board.nextTile.img}}" alt="tile" />
 </div>
-
-</main>
-</div>
+<div class="board" data-ng-board data-ng-size="board.size">
+    <div data-ng-move="move" data-ng-repeat="move in board.moves" data-ng-offset="board.offset"></div>
+    <div data-ng-available-position="availablePosition" data-ng-repeat="availablePosition in board.availablePositions" data-ng-offset="board.offset"></div>
 </div>
