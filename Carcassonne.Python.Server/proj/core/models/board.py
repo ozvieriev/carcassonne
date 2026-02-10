@@ -2,6 +2,8 @@ from typing import Dict, Tuple, Optional, List
 from .tile import tile
 from .player import player
 from .move import move
+from .meeple import meeple
+from .availableMove import availableMove
 from .point import point
 from ..utils import *
 from ..enums import *
@@ -114,7 +116,7 @@ class board:
         if (tile is None):
             return None
 
-        anyAvailable = self.getAnyAvailablePosition(tile)
+        anyAvailable = self.getAnyAvailableMove(tile)
 
         if (anyAvailable is None):
             self.skippedTiles.append(tile)
@@ -163,52 +165,73 @@ class board:
 
         return True
 
-    def placeTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
+    def placeTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0, meeple_position: Optional[str] = None) -> bool:
+        """Place a tile at (x,y) with rotation. Optionally place a meeple on that tile at meeple_position.
+
+        meeple_position is a string (e.g. 'center', 'N', 'E', 'S', 'W') understood by the UI/logic.
+        """
         if not self.canPlaceTile(x, y, tile, rotation):
             return False
 
         player = self.getCurrentPlayer()
 
-        self.moves[(x, y)] = move(player, tile, point(x, y), rotation)
+        m = None
+        if meeple_position and player is not None:
+            m = meeple(player.id, meeple_position)
+
+        self.moves[(x, y)] = move(player, tile, point(x, y), rotation, m)
 
         return True
 
-    def getAnyAvailablePosition(self, tile: tile) -> tuple[int, int] | None:
+    def getAnyAvailableMove(self, tile: tile) -> Optional[availableMove]:
+        """Return a single availableMove (location + valid rotations) for the given tile, or None."""
+        
+        rotations = tileRotation.getAllRotations()
+        
         if not self.moves:
-            return (0, 0)
-
-        rotations = list(tileRotation)
+            return availableMove(point(0, 0), tile, rotations)
 
         for (x, y) in self.moves.keys():
             for _, (nx, ny), _ in self.getNeighbors(x, y):
                 if (nx, ny) in self.moves:
                     continue
 
+                validRotations: List[tileRotation] = []
+
                 for rotation in rotations:
                     if self.canPlaceTile(nx, ny, tile, rotation):
-                        return (nx, ny)
+                        validRotations.append(rotation)
+
+                if validRotations:
+                    return availableMove(point(nx, ny), tile, validRotations)
 
         return None
 
-    def getAvailablePositions(self, tile: tile) -> list[point]:
-        positions = set()
+    def getAvailableMoves(self, tile: tile) -> list[availableMove]:
+        """Return a list of availableMove objects (location + rotations) for the given tile."""
+        
+        rotations = tileRotation.getAllRotations()
+        availableMoves: List[availableMove] = []
 
         if not self.moves:
-            return [(0, 0)]
-
-        rotations = list(tileRotation)
+            availableMoves.append(availableMove(point(0, 0), tile, rotations))
+            return availableMoves
 
         for (x, y) in self.moves.keys():
             for _, (nx, ny), _ in self.getNeighbors(x, y):
                 if (nx, ny) in self.moves:
                     continue
 
+                validRotations: List[tileRotation] = []
+
                 for rotation in rotations:
                     if self.canPlaceTile(nx, ny, tile, rotation):
-                        positions.add(point(nx, ny))
-                        break
+                        validRotations.append(rotation)
 
-        return list(positions)
+                if validRotations:
+                    availableMoves.append(availableMove(point(nx, ny), tile, validRotations))
+
+        return availableMoves
 
     def getNeighbors(self, x: int, y: int):
         yield (tileDirection.N, (x, y - 1), tileDirection.S)

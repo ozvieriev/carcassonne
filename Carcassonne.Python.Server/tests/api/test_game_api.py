@@ -40,49 +40,33 @@ def testPlay(request):
     webbrowser.open(BASE_URL + f"/#!/en/game/{gameId}?playerId=alice")
 
     dataNextTile = d.get("nextTile", {})
-    dataAvailablePositions = d.get("availablePositions", [])
+    dataAvailableMoves = d.get("availableMoves", [])
 
     index = 0
     while (t := tile.from_dict(dataNextTile) if dataNextTile is not None else None) is not None:
-        positions = [point.from_dict(p) for p in dataAvailablePositions]
+        nextMove = next(iter([availableMove.from_dict(am) for am in dataAvailableMoves]), None)
 
-        if len(positions) == 0:
+        if not nextMove:
             assert False, "No available positions to place tile"  # TODO
 
-        for position in positions:
-            rotation = tileRotation.R0
+        location = nextMove.location
+        rotation = next(iter(nextMove.rotations))
 
-            while True:
-                try:
-                    request = {
-                        "location": position.to_dict(),
-                        "rotation": rotation.value
-                    }
-                    response = put(f"/game/{gameId}/placeTile", json=request)
+        request = {
+            "location": location.to_dict(),
+            "rotation": rotation.value
+        }
 
-                    if (response.status_code == 200):
-                        index += 1
+        response = put(f"/game/{gameId}/placeTile", json=request)
 
-                        if (index > 999):
-                            return
+        if (response.status_code == 200):
+            index += 1
 
-                        json = response.json()
+            json = response.json()
 
-                        d = dict(json)
+            d = dict(json)
 
-                        dataNextTile = d.get("nextTile", {})
-                        dataAvailablePositions = d.get(
-                            "availablePositions", [])
-                    else:
-                        pass
-
-                finally:
-                    pass
-
-                rotation = rotation.rotate()
-
-                if rotation == tileRotation.R0 or response.status_code == 200:
-                    break
-
-            if rotation == tileRotation.R0 or response.status_code == 200:
-                break
+            dataNextTile = d.get("nextTile", {})
+            dataAvailableMoves = d.get("availableMoves", [])
+        else:
+            assert False, f"Failed to place tile at {location} with rotation {rotation}. Response: {response.text}"

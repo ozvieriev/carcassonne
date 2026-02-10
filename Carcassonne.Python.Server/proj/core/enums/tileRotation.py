@@ -10,3 +10,7 @@ class tileRotation(Enum):
     def rotate(self):
         value = (self.value + 90) % 360
         return tileRotation(value)
+    
+    @staticmethod
+    def getAllRotations():
+        return list(tileRotation)

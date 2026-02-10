@@ -17,25 +17,17 @@ def testPlay(request):
     assert b.placeTile(0, 0, t)
 
     while (t := b.getNextTile()) is not None:
-        placed = False
-        positions = b.getAvailablePositions(t)
-        #htmlS.saveToFile(request.node.name, r.toHtml(t))  
+        nextMove = b.getAnyAvailableMove(t)
+        htmlS.saveToFile(request.node.name, r.toHtml(t))  
 
-        if len(positions) == 0:
+        if not nextMove:
            assert False, "No available positions to place tile" #TODO
 
-        for position in positions:
-            rotation = tileRotation.R0
+        location = nextMove.location
+        rotation = nextMove.rotations[0]
 
-            while (placed := b.placeTile(position.x, position.y, t, rotation)) is False:
-                rotation = rotation.rotate()
-
-                if rotation == tileRotation.R0:
-                    break
-
-            # if (placed):
-            #     htmlS.saveToFile(request.node.name, r.toHtml())
-            #     break
+        placed = b.placeTile(location.x, location.y, t, rotation)
+        assert placed, "Failed to place tile at " + str(location) + " with rotation " + str(rotation)
 
     s = r.toJson()
 

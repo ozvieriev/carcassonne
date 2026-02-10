@@ -12,7 +12,7 @@ angular.module('app.controllers').controller('gameController',
             nextPlayerId: null,
             currentPlayerId: playerId,
             moves: [],
-            availablePositions: [],
+            availableMoves: [],
             players: []
         };
 
@@ -24,10 +24,10 @@ angular.module('app.controllers').controller('gameController',
         let apply = (response) => {
 
             if (response.moves) {
-                calculateOffset(response.moves, response.availablePositions);
+                calculateOffset(response.moves);
 
-                $scope.board.moves = response.moves;
-                $scope.board.availablePositions = response.availablePositions || [];
+                $scope.board.moves = response.moves || [];
+                $scope.board.availableMoves = response.availableMoves || [];
             }
 
             $scope.board.nextTile = response.nextTile;
@@ -35,15 +35,13 @@ angular.module('app.controllers').controller('gameController',
             $scope.board.players = response.players || [];
 
             if($scope.board.currentPlayerId != $scope.board.nextPlayerId)
-                $scope.board.availablePositions = [];
+                $scope.board.availableMoves = [];
         }
 
-        let calculateOffset = (moves, availablePositions) => {
+        let calculateOffset = (moves) => {
 
             if (!moves.length)
                 return;
-
-            availablePositions = availablePositions || [];
 
             const minX = Math.min(...moves.map(move => move.location.x));
             const maxX = Math.max(...moves.map(move => move.location.x));

@@ -6,7 +6,7 @@ from ..enums import *
 class move:
     def __init__(self, player: player, tile: tile, location: point, rotation: tileRotation):
         self.playerId: str = player.id
-        self.tile = tile
+        self.tile: "tile" = tile
         self.location: point = location
         self.rotation: tileRotation = rotation
 

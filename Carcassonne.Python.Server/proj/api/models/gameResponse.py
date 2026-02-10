@@ -6,7 +6,7 @@ class gameApiModel():
     id: str
     nextTile: tile | None
     nextPlayerId: str
-    availablePositions: list[point]
+    availableMoves: list[availableMove]
     moves: list[move]
     players: list[player]
 
@@ -21,7 +21,7 @@ class gameApiModel():
         model.id = encodeBase62(game.id)
         model.nextTile = nextTile.to_dict() if nextTile else None
         model.nextPlayerId = nextPlayer.id if nextPlayer else None
-        model.availablePositions = board.getAvailablePositions(nextTile) if nextTile else None
+        model.availableMoves = board.getAvailableMoves(nextTile) if nextTile else None
         model.moves = [v for (x, y), v in board.moves.items()]
         model.players = [p.to_dict() for p in board.getPlayers()]
 

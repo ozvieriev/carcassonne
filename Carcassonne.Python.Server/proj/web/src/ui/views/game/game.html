@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div data-ng-if="board.nextTile" class="tile">
-                <img src="img/tiles/{{board.nextTile.img}}" alt="tile" />
+                <img data-ng-src="img/tiles/{{board.nextTile.img}}" alt="tile" />
             </div>
         </div>
     </nav>
@@ -21,9 +21,8 @@
 
         <div class="board" data-ng-board data-ng-size="board.size">
             <div data-ng-move="move" data-ng-repeat="move in board.moves" data-ng-offset="board.offset"></div>
-
-            <div data-ng-available-position="availablePosition"
-                data-ng-repeat="availablePosition in board.availablePositions" data-ng-offset="board.offset"></div>
+            <div data-ng-available-move="availableMove"
+                data-ng-repeat="availableMove in board.availableMoves" data-ng-offset="board.offset"></div>
         </div>
     </main>
 </div>
