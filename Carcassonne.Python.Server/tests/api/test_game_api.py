@@ -38,7 +38,7 @@ def testPlay(request):
     gameId = d.get("id", "")
 
     webbrowser.open(BASE_URL + f"/#!/en/game/{gameId}?playerId=alice")
-    
+
     dataNextTile = d.get("nextTile", {})
     dataAvailablePositions = d.get("availablePositions", [])
 
@@ -83,8 +83,6 @@ def testPlay(request):
 
                 if rotation == tileRotation.R0 or response.status_code == 200:
                     break
-            
+
             if rotation == tileRotation.R0 or response.status_code == 200:
                 break
-                
-

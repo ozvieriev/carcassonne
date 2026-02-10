@@ -4,65 +4,45 @@ from proj.core.models import *
 from proj.core.enums import *
 from proj.core.factories.playerFactory import playerFactory
 from time import sleep
+import pytest
 
-
-def testPlaceInitialTile():
+@pytest.fixture
+def bFixture():
     players = playerFactory.loadFromMap()
     b = board(players, tileFactory.loadFromMap())
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
     assert b.placeTile(0, 0, t)
 
+    return b
 
-def testCannotPlaceOnOccupied():
-    players = playerFactory.loadFromMap()
-    b = board(players, tileFactory.loadFromMap())
-    t = tileFactory.createTile(
-        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t)
-    # placing another tile at the same coordinates should fail
+
+def testCannotPlaceOnOccupied(bFixture):
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD, tileEdge.FIELD)
-    assert b.placeTile(0, 0, t2) is False
+
+    assert bFixture.placeTile(0, 0, t2) is False
 
 
-def testCanPlaceAdjacentMatching():
-    players = playerFactory.loadFromMap()
-    b = board(players, tileFactory.loadFromMap())
-    base = tileFactory.createTile(
-        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, base)
-
-    # base north is CITY, so a tile placed at (0, -1) must have south == CITY
-    matching = tileFactory.createTile(
+def testCanPlaceAdjacentMatching(bFixture):
+    t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.CITY, tileEdge.ROAD)
-    assert b.placeTile(0, -1, matching)
+
+    assert bFixture.placeTile(0, -1, t2)
 
 
-def testRejectMismatchedAdjacent():
-    players = playerFactory.loadFromMap()
-    b = board(players, tileFactory.loadFromMap())
-    base = tileFactory.createTile(
-        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, base)
-
-    # base north is CITY; provide a tile whose south is not CITY
-    bad = tileFactory.createTile(
+def testRejectMismatchedAdjacent(bFixture):
+    t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD, tileEdge.FIELD)
-    assert b.placeTile(0, -1, bad) is False
+    
+    assert bFixture.placeTile(0, -1, t2) is False
 
 
-def testRotationAwarePlacement():
-    players = playerFactory.loadFromMap()
-    b = board(players, tileFactory.loadFromMap())
-    t = tileFactory.createTile(
-        tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t)
-
-    rot_tile = tileFactory.createTile(
+def testRotationAwarePlacement(bFixture):
+    t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD)
 
-    assert b.placeTile(1, 0, rot_tile, tileRotation.R90)
+    assert bFixture.placeTile(1, 0, t2, tileRotation.R90)
 
 
 def testAddAndGetPlayers():

@@ -30,390 +30,175 @@
     "tiles": [
         {
             "img": "River_I_C2_Tile_L.png",
-            "edges": {
-                "N": "RIVER",
-                "E": "FIELD",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
+            "edges": "rFFF"
         },
         {
             "img": "River_III_C2_Tile_E.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "RIVER",
-                "W": "RIVER"
-            }
+            "edges": "CCrr"
         },
         {
             "img": "River_III_C2_Tile_B.png",
-            "edges": {
-                "N": "CITY",
-                "E": "RIVER",
-                "S": "ROAD",
-                "W": "RIVER"
-            }
+            "edges": "CrRr"
         },
         {
             "img": "River_III_C2_Tile_C.png",
-            "edges": {
-                "N": "CITY",
-                "E": "RIVER",
-                "S": "CITY",
-                "W": "RIVER"
-            }
+            "edges": "CrCr"
         },
         {
             "img": "River_III_C2_Tile_D.png",
-            "edges": {
-                "N": "RIVER",
-                "E": "FIELD",
-                "S": "RIVER",
-                "W": "FIELD"
-            }
+            "edges": "rFrF"
         },
         {
             "img": "River_III_C2_Tile_J.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "RIVER",
-                "S": "RIVER",
-                "W": "FIELD"
-            }
+            "edges": "FrrF"
         },
         {
             "img": "River_III_C2_Tile_F.png",
-            "edges": {
-                "N": "RIVER",
-                "E": "FIELD",
-                "S": "RIVER",
-                "W": "FIELD"
-            }
+            "edges": "rFrF"
         },
         {
             "img": "River_III_C2_Tile_G.png",
-            "edges": {
-                "N": "RIVER",
-                "E": "FIELD",
-                "S": "FIELD",
-                "W": "RIVER"
-            }
+            "edges": "rFFr"
         },
         {
             "img": "River_III_C2_Tile_H.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "RIVER",
-                "S": "ROAD",
-                "W": "RIVER"
-            }
+            "edges": "FrRr"
         },
         {
             "img": "River_III_C2_Tile_I.png",
-            "edges": {
-                "N": "ROAD",
-                "E": "RIVER",
-                "S": "RIVER",
-                "W": "ROAD"
-            }
+            "edges": "RrrR"
         },
         {
             "img": "River_III_C2_Tile_K.png",
-            "edges": {
-                "N": "RIVER",
-                "E": "ROAD",
-                "S": "RIVER",
-                "W": "ROAD"
-            }
+            "edges": "rRrR"
         },
         {
             "img": "River_III_C2_Tile_A.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "FIELD",
-                "S": "RIVER",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_D.png",
-            "edges": {
-                "N": "CITY",
-                "E": "ROAD",
-                "S": "FIELD",
-                "W": "ROAD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_R.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_G.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_P.png",
-            "edges": {
-                "N": "CITY",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_E.png",
-            "edges": {
-                "N": "CITY",
-                "E": "FIELD",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_J.png",
-            "edges": {
-                "N": "CITY",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_N.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_L.png",
-            "edges": {
-                "N": "CITY",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_V.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_T.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "ROAD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_C.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "CITY",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_B.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "FIELD",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_I.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_O.png",
-            "edges": {
-                "N": "CITY",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_M.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_F.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_K.png",
-            "edges": {
-                "N": "CITY",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_U.png",
-            "edges": {
-                "N": "ROAD",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_H.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_Q.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_W.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
-        },
-        {
-            "img": "Base_Game_C2_Tile_S.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "ROAD",
-                "W": "CITY"
-            }
+            "edges": "FFrF"
         },
         {
             "img": "Base_Game_C2_Tile_A.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "FIELD"
-            }
+            "edges": "FFRF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_E.png",
+            "edges": "CFFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_F.png",
+            "edges": "FCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_J.png",
+            "edges": "CRRF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_V.png",
+            "edges": "FFRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_G.png",
+            "edges": "FCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_N.png",
+            "edges": "CCFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_W.png",
+            "edges": "FRRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_Q.png",
+            "edges": "CCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_K.png",
+            "edges": "CFRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_M.png",
+            "edges": "CCFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_U.png",
+            "edges": "RFRF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_H.png",
+            "edges": "FCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_T.png",
+            "edges": "CCRC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_P.png",
+            "edges": "CRRC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_R.png",
+            "edges": "CCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_I.png",
+            "edges": "CCFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_L.png",
+            "edges": "CRRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_D.png",
+            "edges": "CRFR"
         },
         {
             "img": "Base_Game_C2_Tile_X.png",
-            "edges": {
-                "N": "ROAD",
-                "E": "ROAD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
+            "edges": "RRRR"
         },
         {
-            "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "CITY"
-            }
+            "img": "Base_Game_C2_Tile_O.png",
+            "edges": "CRRC"
         },
         {
-            "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
+            "img": "Base_Game_C2_Tile_S.png",
+            "edges": "CCRC"
         },
         {
-            "img": "Abbot-Base_Game_C2_Tile_U_Garden.png",
-            "edges": {
-                "N": "ROAD",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "FIELD"
-            }
+            "img": "Base_Game_C2_Tile_B.png",
+            "edges": "FFFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_C.png",
+            "edges": "CCCC"
         },
         {
             "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
-            "edges": {
-                "N": "CITY",
-                "E": "FIELD",
-                "S": "CITY",
-                "W": "FIELD"
-            }
-        },
-        {
-            "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
-            "edges": {
-                "N": "FIELD",
-                "E": "FIELD",
-                "S": "ROAD",
-                "W": "ROAD"
-            }
+            "edges": "CFCF"
         },
         {
             "img": "Abbot-Base_Game_C2_Tile_N_Garden.png",
-            "edges": {
-                "N": "CITY",
-                "E": "CITY",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
+            "edges": "CCFF"
+        },
+        {
+            "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+            "edges": "CCFF"
+        },
+        {
+            "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
+            "edges": "CCFC"
         },
         {
             "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
-            "edges": {
-                "N": "CITY",
-                "E": "FIELD",
-                "S": "FIELD",
-                "W": "FIELD"
-            }
+            "edges": "CFFF"
+        },
+        {
+            "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
+            "edges": "FFRR"
+        },
+        {
+            "img": "Abbot-Base_Game_C2_Tile_U_Garden.png",
+            "edges": "RFRF"
         }
     ],
     "moves": [
@@ -421,12 +206,7 @@
             "playerId": "alice",
             "tile": {
                 "img": "River_I_C2_Tile_L.png",
-                "edges": {
-                    "N": "RIVER",
-                    "E": "FIELD",
-                    "S": "FIELD",
-                    "W": "FIELD"
-                }
+                "edges": "rFFF"
             },
             "location": {
                 "x": 0,
@@ -438,12 +218,7 @@
             "playerId": "bob",
             "tile": {
                 "img": "River_III_C2_Tile_E.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "RIVER",
-                    "W": "RIVER"
-                }
+                "edges": "CCrr"
             },
             "location": {
                 "x": 0,
@@ -455,12 +230,7 @@
             "playerId": "carol",
             "tile": {
                 "img": "River_III_C2_Tile_B.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "RIVER",
-                    "S": "ROAD",
-                    "W": "RIVER"
-                }
+                "edges": "CrRr"
             },
             "location": {
                 "x": -1,
@@ -472,12 +242,7 @@
             "playerId": "dave",
             "tile": {
                 "img": "River_III_C2_Tile_C.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "RIVER",
-                    "S": "CITY",
-                    "W": "RIVER"
-                }
+                "edges": "CrCr"
             },
             "location": {
                 "x": -2,
@@ -489,12 +254,7 @@
             "playerId": "eve",
             "tile": {
                 "img": "River_III_C2_Tile_D.png",
-                "edges": {
-                    "N": "RIVER",
-                    "E": "FIELD",
-                    "S": "RIVER",
-                    "W": "FIELD"
-                }
+                "edges": "rFrF"
             },
             "location": {
                 "x": -3,
@@ -506,12 +266,7 @@
             "playerId": "alice",
             "tile": {
                 "img": "River_III_C2_Tile_J.png",
-                "edges": {
-                    "N": "FIELD",
-                    "E": "RIVER",
-                    "S": "RIVER",
-                    "W": "FIELD"
-                }
+                "edges": "FrrF"
             },
             "location": {
                 "x": -4,
@@ -523,12 +278,7 @@
             "playerId": "bob",
             "tile": {
                 "img": "River_III_C2_Tile_F.png",
-                "edges": {
-                    "N": "RIVER",
-                    "E": "FIELD",
-                    "S": "RIVER",
-                    "W": "FIELD"
-                }
+                "edges": "rFrF"
             },
             "location": {
                 "x": -4,
@@ -540,12 +290,7 @@
             "playerId": "carol",
             "tile": {
                 "img": "River_III_C2_Tile_G.png",
-                "edges": {
-                    "N": "RIVER",
-                    "E": "FIELD",
-                    "S": "FIELD",
-                    "W": "RIVER"
-                }
+                "edges": "rFFr"
             },
             "location": {
                 "x": -4,
@@ -557,12 +302,7 @@
             "playerId": "dave",
             "tile": {
                 "img": "River_III_C2_Tile_H.png",
-                "edges": {
-                    "N": "FIELD",
-                    "E": "RIVER",
-                    "S": "ROAD",
-                    "W": "RIVER"
-                }
+                "edges": "FrRr"
             },
             "location": {
                 "x": -5,
@@ -574,12 +314,7 @@
             "playerId": "eve",
             "tile": {
                 "img": "River_III_C2_Tile_I.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "RIVER",
-                    "S": "RIVER",
-                    "W": "ROAD"
-                }
+                "edges": "RrrR"
             },
             "location": {
                 "x": -6,
@@ -591,12 +326,7 @@
             "playerId": "alice",
             "tile": {
                 "img": "River_III_C2_Tile_K.png",
-                "edges": {
-                    "N": "RIVER",
-                    "E": "ROAD",
-                    "S": "RIVER",
-                    "W": "ROAD"
-                }
+                "edges": "rRrR"
             },
             "location": {
                 "x": -6,
@@ -608,12 +338,7 @@
             "playerId": "bob",
             "tile": {
                 "img": "River_III_C2_Tile_A.png",
-                "edges": {
-                    "N": "FIELD",
-                    "E": "FIELD",
-                    "S": "RIVER",
-                    "W": "FIELD"
-                }
+                "edges": "FFrF"
             },
             "location": {
                 "x": -6,
@@ -624,271 +349,251 @@
         {
             "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -5,
+                "y": 0
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -4,
+                "y": 2
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": 0,
-                "y": -2
+                "y": 1
             },
-            "rotation": 180
-        },
-        {
-            "playerId": "dave",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": 1,
-                "y": -1
-            },
-            "rotation": 270
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -1,
-                "y": -2
-            },
-            "rotation": 180
+            "rotation": 0
         },
         {
             "playerId": "alice",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
-                "x": -1,
+                "x": -3,
                 "y": 0
             },
-            "rotation": 270
+            "rotation": 0
         },
         {
             "playerId": "bob",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -2,
-                "y": -2
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": -3,
                 "y": -2
             },
-            "rotation": 0
+            "rotation": 90
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -3,
+                "y": 1
+            },
+            "rotation": 180
         },
         {
             "playerId": "dave",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
-                "x": -4,
-                "y": -2
+                "x": -1,
+                "y": 0
             },
-            "rotation": 0
+            "rotation": 180
         },
         {
             "playerId": "eve",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": -5,
                 "y": -1
             },
-            "rotation": 270
+            "rotation": 90
         },
         {
             "playerId": "alice",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
-                "x": -3,
-                "y": 1
+                "x": -7,
+                "y": 2
             },
-            "rotation": 90
+            "rotation": 270
         },
         {
             "playerId": "bob",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -4,
-                "y": 2
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -6,
-                "y": 0
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "dave",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -7,
-                "y": 1
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
-            },
-            "location": {
-                "x": -7,
-                "y": 2
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": -5,
                 "y": 3
             },
-            "rotation": 90
+            "rotation": 0
         },
         {
-            "playerId": "bob",
+            "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": -6,
                 "y": 4
             },
-            "rotation": 180
+            "rotation": 0
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -4,
+                "y": -2
+            },
+            "rotation": 270
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": 1,
+                "y": 0
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -7,
+                "y": 3
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
+            },
+            "location": {
+                "x": -7,
+                "y": 1
+            },
+            "rotation": 270
         },
         {
             "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -1,
+                "y": -2
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -8,
+                "y": 1
+            },
+            "rotation": 270
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -4,
+                "y": -3
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
             },
             "location": {
                 "x": 1,
+                "y": -1
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -3,
+                "y": -3
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": 2,
                 "y": 0
             },
             "rotation": 90
@@ -896,376 +601,278 @@
         {
             "playerId": "dave",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "ROAD",
-                    "S": "FIELD",
-                    "W": "ROAD"
-                }
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
             },
             "location": {
                 "x": 0,
-                "y": 1
+                "y": -2
             },
             "rotation": 180
         },
         {
             "playerId": "eve",
             "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -8,
+                "y": 3
+            },
+            "rotation": 270
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -2,
+                "y": 1
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -7,
+                "y": 0
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
             },
             "location": {
                 "x": -8,
                 "y": 2
             },
+            "rotation": 270
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -9,
+                "y": 1
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -4,
+                "y": -4
+            },
             "rotation": 90
         },
         {
             "playerId": "alice",
             "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": 0,
+                "x": -5,
                 "y": -3
             },
-            "rotation": 90
+            "rotation": 0
         },
         {
             "playerId": "bob",
             "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": -7,
-                "y": 4
+                "x": 1,
+                "y": -2
             },
-            "rotation": 90
+            "rotation": 180
         },
         {
             "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
                 "x": 2,
                 "y": -1
             },
-            "rotation": 0
+            "rotation": 180
         },
         {
             "playerId": "dave",
             "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": -1,
-                "y": -3
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
-            },
-            "location": {
-                "x": -2,
-                "y": -3
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": {
-                    "N": "ROAD",
-                    "E": "FIELD",
-                    "S": "ROAD",
-                    "W": "FIELD"
-                }
-            },
-            "location": {
-                "x": -8,
-                "y": 1
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "bob",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -8,
-                "y": 3
+                "x": -3,
+                "y": -4
             },
             "rotation": 180
         },
         {
-            "playerId": "carol",
+            "playerId": "eve",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
                 "x": -2,
-                "y": -4
+                "y": -3
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": 3,
+                "y": 0
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -3,
+                "y": 2
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": 2,
+                "y": 1
             },
             "rotation": 0
         },
         {
             "playerId": "dave",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": -7,
+                "x": 0,
+                "y": -3
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -1,
+                "y": 1
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -8,
+                "y": 4
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -9,
+                "y": 3
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -8,
                 "y": 0
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -2,
+                "y": 2
             },
             "rotation": 270
         },
         {
             "playerId": "eve",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": -1,
-                "y": -4
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -2,
-                "y": 0
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "bob",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -8,
-                "y": 0
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -4,
-                "y": 3
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "dave",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": 0,
-                "y": -4
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -4,
-                "y": -3
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": 3,
+                "x": -7,
                 "y": -1
             },
             "rotation": 90
         },
         {
-            "playerId": "bob",
+            "playerId": "alice",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": -6,
-                "y": 5
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -7,
-                "y": 5
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "dave",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": -2,
-                "y": 1
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": {
-                    "N": "CITY",
-                    "E": "CITY",
-                    "S": "FIELD",
-                    "W": "CITY"
-                }
-            },
-            "location": {
-                "x": 0,
+                "x": -9,
                 "y": 2
             },
-            "rotation": 0
+            "rotation": 90
         }
     ]
 }
