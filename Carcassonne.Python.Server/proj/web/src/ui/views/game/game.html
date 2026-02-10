@@ -1,7 +1,29 @@
-<div data-ng-if="board.nextTile" class="tile">
-    <img src="img/tiles/{{board.nextTile.img}}" alt="tile" />
-</div>
-<div class="board" data-ng-board data-ng-size="board.size">
-    <div data-ng-move="move" data-ng-repeat="move in board.moves" data-ng-offset="board.offset"></div>
-    <div data-ng-available-position="availablePosition" data-ng-repeat="availablePosition in board.availablePositions" data-ng-offset="board.offset"></div>
+<div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+        <div class="position-sticky pt-3">
+            <div class="list-group list-group-flush ">
+                <div data-ng-class="{ active: board.nextPlayerId == player.id && board.nextTile }"
+                    data-ng-player="player" data-ng-repeat="player in board.players"
+                    class="list-group-item list-group-item-action">
+                    <div>
+                        <div data-ng-bind="player.name"></div>
+                        <div class="badge bg-{{::player.color}}">meeple</div>
+                    </div>
+                </div>
+            </div>
+            <div data-ng-if="board.nextTile" class="tile">
+                <img src="img/tiles/{{board.nextTile.img}}" alt="tile" />
+            </div>
+        </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+        <div class="board" data-ng-board data-ng-size="board.size">
+            <div data-ng-move="move" data-ng-repeat="move in board.moves" data-ng-offset="board.offset"></div>
+
+            <div data-ng-available-position="availablePosition"
+                data-ng-repeat="availablePosition in board.availablePositions" data-ng-offset="board.offset"></div>
+        </div>
+    </main>
 </div>

@@ -27,7 +27,7 @@ def testPlay(request):
         for position in positions:
             rotation = tileRotation.R0
 
-            while (placed := b.placeTile(position[0], position[1], t, rotation)) is False:
+            while (placed := b.placeTile(position.x, position.y, t, rotation)) is False:
                 rotation = rotation.rotate()
 
                 if rotation == tileRotation.R0:

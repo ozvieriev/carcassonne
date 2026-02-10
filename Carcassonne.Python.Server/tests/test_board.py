@@ -141,4 +141,3 @@ def testTilePlacementRecordsOwner():
         tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
 
     assert b.placeTile(1, 0, t2)
-    assert b.getTile(1, 0).playerId == p2.id

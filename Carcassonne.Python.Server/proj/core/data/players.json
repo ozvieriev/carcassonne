@@ -2,26 +2,26 @@
   {
     "id": "alice",
     "name": "Alice",
-    "color": "#f00"
+    "color": "primary"
   },
   {
     "id": "bob",
     "name": "Bob",
-    "color": "#007AFF"
+    "color": "secondary"
   },
   {
     "id": "carol",
     "name": "Carol",
-    "color": "#00C800"
+    "color": "success"
   },
   {
     "id": "dave",
     "name": "Dave",
-    "color": "#FFCC00"
+    "color": "danger"
   },
   {
     "id": "eve",
     "name": "Eve",
-    "color": "#000"
+    "color": "warning"
   }
 ]

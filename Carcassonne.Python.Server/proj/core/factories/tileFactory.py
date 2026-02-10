@@ -6,14 +6,13 @@ import random
 class tileFactory:
     @staticmethod
     def createTile(north: tileEdge, east: tileEdge, south: tileEdge, west: tileEdge, center: tileEdge = None) -> tile:
-        edges = {
-            tileDirection.N: north,
-            tileDirection.E: east,
-            tileDirection.S: south,
-            tileDirection.W: west
-        }
-
-        return tile("", edges)
+        
+        n = tile.EDGE_TO_CHAR[north]
+        e = tile.EDGE_TO_CHAR[east]
+        s = tile.EDGE_TO_CHAR[south]
+        w = tile.EDGE_TO_CHAR[west]
+        
+        return tile("", str.join("", [n, e, s, w]))
 
     @staticmethod
     def loadFromMap():

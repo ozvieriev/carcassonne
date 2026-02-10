@@ -1,18 +1,19 @@
 angular.module('app.controllers').controller('gameController',
-    ['$q', '$state', '$stateParams', '$scope', '$api', ($q, $state, $stateParams, $scope, $api) => {
+    ['$q', '$state', '$stateParams', '$scope', '$api', '$location', ($q, $state, $stateParams, $scope, $api, $location) => {
 
         let ws = null;
+
+        const playerId = $location.search().playerId;
 
         $scope.board = {
             size: { width: 0, height: 0 },
             offset: { x: 0, y: 0 },
             nextTile: null,
-            moves: []
-        };
-
-        $scope.joinGame = () => {
-
-
+            nextPlayerId: null,
+            currentPlayerId: playerId,
+            moves: [],
+            availablePositions: [],
+            players: []
         };
 
         let safeApply = (fn) => {
@@ -22,14 +23,19 @@ angular.module('app.controllers').controller('gameController',
 
         let apply = (response) => {
 
-
             if (response.moves) {
                 calculateOffset(response.moves, response.availablePositions);
+
                 $scope.board.moves = response.moves;
                 $scope.board.availablePositions = response.availablePositions || [];
             }
-            
+
             $scope.board.nextTile = response.nextTile;
+            $scope.board.nextPlayerId = response.nextPlayerId;
+            $scope.board.players = response.players || [];
+
+            if($scope.board.currentPlayerId != $scope.board.nextPlayerId)
+                $scope.board.availablePositions = [];
         }
 
         let calculateOffset = (moves, availablePositions) => {
@@ -38,7 +44,7 @@ angular.module('app.controllers').controller('gameController',
                 return;
 
             availablePositions = availablePositions || [];
-            
+
             const minX = Math.min(...moves.map(move => move.location.x));
             const maxX = Math.max(...moves.map(move => move.location.x));
 

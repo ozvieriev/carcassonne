@@ -5,10 +5,10 @@ from proj.core.models import *
 class gameApiModel():
     id: str
     nextTile: tile | None
-    nextPlayerId: int | str
+    nextPlayerId: str
     availablePositions: list[point]
-    moves: list[move] | None
-    totalMoves: int
+    moves: list[move]
+    players: list[player]
 
     @staticmethod
     def createInstance(game: gameModel, board: board) -> "gameApiModel":
@@ -23,7 +23,6 @@ class gameApiModel():
         model.nextPlayerId = nextPlayer.id if nextPlayer else None
         model.availablePositions = board.getAvailablePositions(nextTile) if nextTile else None
         model.moves = [v for (x, y), v in board.moves.items()]
-
-        model.totalMoves = len(board.moves)
+        model.players = [p.to_dict() for p in board.getPlayers()]
 
         return model

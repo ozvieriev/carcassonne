@@ -147,8 +147,8 @@ class board:
             if neighborMove is None:
                 continue
 
-            edge = tile.edge(direction, rotation)
-            neighborEdge = neighborMove.tile.edge(
+            edge = tile.getEdge(direction, rotation)
+            neighborEdge = neighborMove.tile.getEdge(
                 opposite, neighborMove.rotation)
 
             if tileHasRiver:

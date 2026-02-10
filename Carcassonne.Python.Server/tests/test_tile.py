@@ -14,35 +14,35 @@ def testCreateTileEdgesAreCorrect():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
 
-    assert createdTile.edge(tileDirection.N) == tileEdge.CITY
-    assert createdTile.edge(tileDirection.E) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.S) == tileEdge.FIELD
-    assert createdTile.edge(tileDirection.W) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.N) == tileEdge.CITY
+    assert createdTile.getEdge(tileDirection.E) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.S) == tileEdge.FIELD
+    assert createdTile.getEdge(tileDirection.W) == tileEdge.ROAD
 
 
 def testCreateTileEdgesAreCorrectRotated():
     createdTile = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
 
-    assert createdTile.edge(tileDirection.N) == tileEdge.CITY
-    assert createdTile.edge(tileDirection.E) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.S) == tileEdge.FIELD
-    assert createdTile.edge(tileDirection.W) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.N) == tileEdge.CITY
+    assert createdTile.getEdge(tileDirection.E) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.S) == tileEdge.FIELD
+    assert createdTile.getEdge(tileDirection.W) == tileEdge.ROAD
 
-    assert createdTile.edge(tileDirection.N, tileRotation.R90) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.E, tileRotation.R90) == tileEdge.CITY
-    assert createdTile.edge(tileDirection.S, tileRotation.R90) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.W, tileRotation.R90) == tileEdge.FIELD
+    assert createdTile.getEdge(tileDirection.N, tileRotation.R90) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.E, tileRotation.R90) == tileEdge.CITY
+    assert createdTile.getEdge(tileDirection.S, tileRotation.R90) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.W, tileRotation.R90) == tileEdge.FIELD
 
-    assert createdTile.edge(tileDirection.N, tileRotation.R180) == tileEdge.FIELD
-    assert createdTile.edge(tileDirection.E, tileRotation.R180) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.S, tileRotation.R180) == tileEdge.CITY
-    assert createdTile.edge(tileDirection.W, tileRotation.R180) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.N, tileRotation.R180) == tileEdge.FIELD
+    assert createdTile.getEdge(tileDirection.E, tileRotation.R180) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.S, tileRotation.R180) == tileEdge.CITY
+    assert createdTile.getEdge(tileDirection.W, tileRotation.R180) == tileEdge.ROAD
 
-    assert createdTile.edge(tileDirection.N, tileRotation.R270) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.E, tileRotation.R270) == tileEdge.FIELD
-    assert createdTile.edge(tileDirection.S, tileRotation.R270) == tileEdge.ROAD
-    assert createdTile.edge(tileDirection.W, tileRotation.R270) == tileEdge.CITY
+    assert createdTile.getEdge(tileDirection.N, tileRotation.R270) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.E, tileRotation.R270) == tileEdge.FIELD
+    assert createdTile.getEdge(tileDirection.S, tileRotation.R270) == tileEdge.ROAD
+    assert createdTile.getEdge(tileDirection.W, tileRotation.R270) == tileEdge.CITY
 
 
 def testTileLoadFromMap():
