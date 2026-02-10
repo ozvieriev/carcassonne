@@ -22,7 +22,7 @@
         <div class="board" data-ng-board data-ng-size="board.size">
             <div data-ng-move="move" data-ng-repeat="move in board.moves" data-ng-offset="board.offset"></div>
             <div data-ng-available-move="availableMove"
-                data-ng-repeat="availableMove in board.availableMoves" data-ng-offset="board.offset"></div>
+                data-ng-repeat="availableMove in board.turn ? board.availableMoves : []" data-ng-offset="board.offset"></div>
         </div>
     </main>
 </div>

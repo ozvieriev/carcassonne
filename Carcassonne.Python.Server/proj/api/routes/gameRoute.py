@@ -19,7 +19,7 @@ def putGame(service: gameService = Depends(createGameService)):
     b = board(players, tiles)
 
     t = b.getNextTile()
-    b.placeTile(0, 0, t)
+    b.placeTile(point(0, 0), t)
 
     model = json.dumps(b.to_dict())
     game = service.create(model)
@@ -52,7 +52,7 @@ async def putGamePlaceTile(gameId: str, request: gamePlaceTileRequest, service: 
     if nextTile is None:
         raise HTTPException(status_code=400, detail="no next tile available")
 
-    if (b.placeTile(request.location.x, request.location.y, nextTile, tileRotation(request.rotation)) is False):
+    if (b.placeTile(point(request.location.x, request.location.y), nextTile, tileRotation(request.rotation)) is False):
         raise HTTPException(status_code=400, detail="invalid tile placement")
 
     game.model = json.dumps(b.to_dict())

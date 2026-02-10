@@ -2,7 +2,6 @@ from typing import Dict, Tuple, Optional, List
 from .tile import tile
 from .player import player
 from .move import move
-from .meeple import meeple
 from .availableMove import availableMove
 from .point import point
 from ..utils import *
@@ -132,18 +131,22 @@ class board:
 
         return move.tile if move else None
 
-    def canPlaceTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
+    def canPlaceTile(self, location: point, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
+        """Return True if `tile` (with rotation) can be placed at `location`.
+
+        `location` is a `point` instance. This replaces the previous x,y signature.
+        """
         if (not self.moves):
             return True
 
-        move = self.getMove(point(x, y))
+        move = self.getMove(location)
 
         if move is not None:
             return False
 
         tileHasRiver = tile.anyEdge(tileEdge.RIVER)
 
-        for direction, (nx, ny), opposite in self.getNeighbors(x, y):
+        for direction, (nx, ny), opposite in self.getNeighbors(location.x, location.y):
             neighborMove = self.getMove(point(nx, ny))
 
             if neighborMove is None:
@@ -165,21 +168,17 @@ class board:
 
         return True
 
-    def placeTile(self, x: int, y: int, tile: tile, rotation: tileRotation = tileRotation.R0, meeple_position: Optional[str] = None) -> bool:
-        """Place a tile at (x,y) with rotation. Optionally place a meeple on that tile at meeple_position.
+    def placeTile(self, location: point, tile: tile, rotation: tileRotation = tileRotation.R0) -> bool:
+        """Place `tile` at `location` (a `point`) with the given rotation.
 
-        meeple_position is a string (e.g. 'center', 'N', 'E', 'S', 'W') understood by the UI/logic.
+        Returns True if placement succeeded.
         """
-        if not self.canPlaceTile(x, y, tile, rotation):
+        if not self.canPlaceTile(location, tile, rotation):
             return False
 
         player = self.getCurrentPlayer()
 
-        m = None
-        if meeple_position and player is not None:
-            m = meeple(player.id, meeple_position)
-
-        self.moves[(x, y)] = move(player, tile, point(x, y), rotation, m)
+        self.moves[(location.x, location.y)] = move(player, tile, location, rotation)
 
         return True
 
@@ -196,14 +195,15 @@ class board:
                 if (nx, ny) in self.moves:
                     continue
 
+                location = point(nx, ny)
                 validRotations: List[tileRotation] = []
 
                 for rotation in rotations:
-                    if self.canPlaceTile(nx, ny, tile, rotation):
+                    if self.canPlaceTile(location, tile, rotation):
                         validRotations.append(rotation)
 
                 if validRotations:
-                    return availableMove(point(nx, ny), tile, validRotations)
+                    return availableMove(location, tile, validRotations)
 
         return None
 
@@ -222,14 +222,15 @@ class board:
                 if (nx, ny) in self.moves:
                     continue
 
+                location = point(nx, ny)
                 validRotations: List[tileRotation] = []
 
                 for rotation in rotations:
-                    if self.canPlaceTile(nx, ny, tile, rotation):
+                    if self.canPlaceTile(location, tile, rotation):
                         validRotations.append(rotation)
 
                 if validRotations:
-                    availableMoves.append(availableMove(point(nx, ny), tile, validRotations))
+                    availableMoves.append(availableMove(location, tile, validRotations))
 
         return availableMoves
 

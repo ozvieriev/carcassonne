@@ -14,7 +14,7 @@ def testPlay(request):
     htmlS = htmlService()
 
     t = b.getNextTile()
-    assert b.placeTile(0, 0, t)
+    assert b.placeTile(point(0, 0), t)
 
     while (t := b.getNextTile()) is not None:
         nextMove = b.getAnyAvailableMove(t)
@@ -26,7 +26,7 @@ def testPlay(request):
         location = nextMove.location
         rotation = nextMove.rotations[0]
 
-        placed = b.placeTile(location.x, location.y, t, rotation)
+        placed = b.placeTile(location, t, rotation)
         assert placed, "Failed to place tile at " + str(location) + " with rotation " + str(rotation)
 
     s = r.toJson()

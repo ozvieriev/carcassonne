@@ -12,7 +12,7 @@ def bFixture():
     b = board(players, tileFactory.loadFromMap())
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t)
+    assert b.placeTile(point(0, 0), t)
 
     return b
 
@@ -21,28 +21,28 @@ def testCannotPlaceOnOccupied(bFixture):
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD, tileEdge.FIELD)
 
-    assert bFixture.placeTile(0, 0, t2) is False
+    assert bFixture.placeTile(point(0, 0), t2) is False
 
 
 def testCanPlaceAdjacentMatching(bFixture):
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.CITY, tileEdge.ROAD)
 
-    assert bFixture.placeTile(0, -1, t2)
+    assert bFixture.placeTile(point(0, -1), t2)
 
 
 def testRejectMismatchedAdjacent(bFixture):
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD, tileEdge.FIELD)
     
-    assert bFixture.placeTile(0, -1, t2) is False
+    assert bFixture.placeTile(point(0, -1), t2) is False
 
 
 def testRotationAwarePlacement(bFixture):
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD)
 
-    assert bFixture.placeTile(1, 0, t2, tileRotation.R90)
+    assert bFixture.placeTile(point(1, 0), t2, tileRotation.R90)
 
 
 def testAddAndGetPlayers():
@@ -98,7 +98,7 @@ def testPlaceTileAdvancesPlayer():
     # placing a tile should advance to next player
     t = tileFactory.createTile(
         tileEdge.CITY, tileEdge.ROAD, tileEdge.FIELD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t)
+    assert b.placeTile(point(0, 0), t)
     assert b.getCurrentPlayer() is p2
 
 
@@ -114,10 +114,10 @@ def testTilePlacementRecordsOwner():
     # first player places at (0,0)
     t1 = tileFactory.createTile(
         tileEdge.CITY, tileEdge.FIELD, tileEdge.ROAD, tileEdge.ROAD)
-    assert b.placeTile(0, 0, t1)
+    assert b.placeTile(point(0, 0), t1)
 
     # next player places at (1,0) using a tile that rotates to match west==ROAD
     t2 = tileFactory.createTile(
         tileEdge.FIELD, tileEdge.FIELD, tileEdge.ROAD, tileEdge.FIELD)
 
-    assert b.placeTile(1, 0, t2)
+    assert b.placeTile(point(1, 0), t2)

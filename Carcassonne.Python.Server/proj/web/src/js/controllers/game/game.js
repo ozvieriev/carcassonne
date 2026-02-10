@@ -11,6 +11,7 @@ angular.module('app.controllers').controller('gameController',
             nextTile: null,
             nextPlayerId: null,
             currentPlayerId: playerId,
+            turn: false,
             moves: [],
             availableMoves: [],
             players: []
@@ -33,9 +34,7 @@ angular.module('app.controllers').controller('gameController',
             $scope.board.nextTile = response.nextTile;
             $scope.board.nextPlayerId = response.nextPlayerId;
             $scope.board.players = response.players || [];
-
-            if($scope.board.currentPlayerId != $scope.board.nextPlayerId)
-                $scope.board.availableMoves = [];
+            $scope.board.turn = playerId == $scope.board.nextPlayerId;
         }
 
         let calculateOffset = (moves) => {

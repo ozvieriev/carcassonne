@@ -77,23 +77,63 @@
             "edges": "FFrF"
         },
         {
-            "img": "Base_Game_C2_Tile_G.png",
-            "edges": "FCFC"
+            "img": "Base_Game_C2_Tile_A.png",
+            "edges": "FFRF"
         },
         {
-            "img": "Base_Game_C2_Tile_F.png",
-            "edges": "FCFC"
+            "img": "Base_Game_C2_Tile_D.png",
+            "edges": "CRFR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_X.png",
+            "edges": "RRRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_L.png",
+            "edges": "CRRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_W.png",
+            "edges": "FRRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_S.png",
+            "edges": "CCRC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_Q.png",
+            "edges": "CCFC"
         },
         {
             "img": "Base_Game_C2_Tile_H.png",
             "edges": "FCFC"
         },
         {
-            "img": "Base_Game_C2_Tile_U.png",
-            "edges": "RFRF"
+            "img": "Base_Game_C2_Tile_K.png",
+            "edges": "CFRR"
         },
         {
-            "img": "Base_Game_C2_Tile_M.png",
+            "img": "Base_Game_C2_Tile_G.png",
+            "edges": "FCFC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_O.png",
+            "edges": "CRRC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_T.png",
+            "edges": "CCRC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_V.png",
+            "edges": "FFRR"
+        },
+        {
+            "img": "Base_Game_C2_Tile_C.png",
+            "edges": "CCCC"
+        },
+        {
+            "img": "Base_Game_C2_Tile_I.png",
             "edges": "CCFF"
         },
         {
@@ -101,76 +141,40 @@
             "edges": "CRRC"
         },
         {
-            "img": "Base_Game_C2_Tile_K.png",
-            "edges": "CFRR"
+            "img": "Base_Game_C2_Tile_F.png",
+            "edges": "FCFC"
         },
         {
-            "img": "Base_Game_C2_Tile_T.png",
-            "edges": "CCRC"
-        },
-        {
-            "img": "Base_Game_C2_Tile_O.png",
-            "edges": "CRRC"
+            "img": "Base_Game_C2_Tile_M.png",
+            "edges": "CCFF"
         },
         {
             "img": "Base_Game_C2_Tile_J.png",
             "edges": "CRRF"
         },
         {
-            "img": "Base_Game_C2_Tile_Q.png",
-            "edges": "CCFC"
-        },
-        {
-            "img": "Base_Game_C2_Tile_N.png",
-            "edges": "CCFF"
-        },
-        {
-            "img": "Base_Game_C2_Tile_S.png",
-            "edges": "CCRC"
-        },
-        {
-            "img": "Base_Game_C2_Tile_R.png",
-            "edges": "CCFC"
-        },
-        {
-            "img": "Base_Game_C2_Tile_X.png",
-            "edges": "RRRR"
-        },
-        {
-            "img": "Base_Game_C2_Tile_I.png",
-            "edges": "CCFF"
-        },
-        {
-            "img": "Base_Game_C2_Tile_D.png",
-            "edges": "CRFR"
-        },
-        {
-            "img": "Base_Game_C2_Tile_L.png",
-            "edges": "CRRR"
+            "img": "Base_Game_C2_Tile_U.png",
+            "edges": "RFRF"
         },
         {
             "img": "Base_Game_C2_Tile_B.png",
             "edges": "FFFF"
         },
         {
-            "img": "Base_Game_C2_Tile_A.png",
-            "edges": "FFRF"
+            "img": "Base_Game_C2_Tile_N.png",
+            "edges": "CCFF"
+        },
+        {
+            "img": "Base_Game_C2_Tile_R.png",
+            "edges": "CCFC"
         },
         {
             "img": "Base_Game_C2_Tile_E.png",
             "edges": "CFFF"
         },
         {
-            "img": "Base_Game_C2_Tile_C.png",
-            "edges": "CCCC"
-        },
-        {
-            "img": "Base_Game_C2_Tile_V.png",
+            "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
             "edges": "FFRR"
-        },
-        {
-            "img": "Base_Game_C2_Tile_W.png",
-            "edges": "FRRR"
         },
         {
             "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
@@ -181,24 +185,20 @@
             "edges": "RFRF"
         },
         {
+            "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+            "edges": "CCFF"
+        },
+        {
             "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
             "edges": "CFCF"
-        },
-        {
-            "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
-            "edges": "FFRR"
-        },
-        {
-            "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
-            "edges": "CFFF"
         },
         {
             "img": "Abbot-Base_Game_C2_Tile_N_Garden.png",
             "edges": "CCFF"
         },
         {
-            "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
-            "edges": "CCFF"
+            "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
+            "edges": "CFFF"
         }
     ],
     "moves": [
@@ -349,24 +349,84 @@
         {
             "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_G.png",
-                "edges": "FCFC"
+                "img": "Base_Game_C2_Tile_A.png",
+                "edges": "FFRF"
             },
             "location": {
                 "x": 1,
                 "y": 0
             },
-            "rotation": 90
+            "rotation": 0
         },
         {
             "playerId": "dave",
             "tile": {
-                "img": "Base_Game_C2_Tile_F.png",
-                "edges": "FCFC"
+                "img": "Base_Game_C2_Tile_D.png",
+                "edges": "CRFR"
             },
             "location": {
                 "x": 0,
                 "y": 1
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_X.png",
+                "edges": "RRRR"
+            },
+            "location": {
+                "x": -5,
+                "y": 2
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_L.png",
+                "edges": "CRRR"
+            },
+            "location": {
+                "x": 0,
+                "y": -2
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "bob",
+            "tile": {
+                "img": "Base_Game_C2_Tile_W.png",
+                "edges": "FRRR"
+            },
+            "location": {
+                "x": -1,
+                "y": 0
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Base_Game_C2_Tile_S.png",
+                "edges": "CCRC"
+            },
+            "location": {
+                "x": -1,
+                "y": -2
+            },
+            "rotation": 270
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Base_Game_C2_Tile_Q.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": 1,
+                "y": -1
             },
             "rotation": 0
         },
@@ -377,157 +437,85 @@
                 "edges": "FCFC"
             },
             "location": {
-                "x": 0,
+                "x": -3,
                 "y": -2
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_U.png",
-                "edges": "RFRF"
-            },
-            "location": {
-                "x": -1,
-                "y": 0
             },
             "rotation": 0
         },
         {
-            "playerId": "bob",
-            "tile": {
-                "img": "Base_Game_C2_Tile_M.png",
-                "edges": "CCFF"
-            },
-            "location": {
-                "x": 1,
-                "y": -1
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Base_Game_C2_Tile_P.png",
-                "edges": "CRRC"
-            },
-            "location": {
-                "x": -2,
-                "y": -2
-            },
-            "rotation": 180
-        },
-        {
-            "playerId": "dave",
+            "playerId": "alice",
             "tile": {
                 "img": "Base_Game_C2_Tile_K.png",
                 "edges": "CFRR"
             },
             "location": {
-                "x": -2,
-                "y": 0
+                "x": -4,
+                "y": -2
             },
-            "rotation": 0
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Base_Game_C2_Tile_T.png",
-                "edges": "CCRC"
-            },
-            "location": {
-                "x": -6,
-                "y": 0
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_O.png",
-                "edges": "CRRC"
-            },
-            "location": {
-                "x": -5,
-                "y": 2
-            },
-            "rotation": 180
+            "rotation": 90
         },
         {
             "playerId": "bob",
             "tile": {
-                "img": "Base_Game_C2_Tile_J.png",
-                "edges": "CRRF"
-            },
-            "location": {
-                "x": -3,
-                "y": -2
-            },
-            "rotation": 270
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Base_Game_C2_Tile_Q.png",
-                "edges": "CCFC"
-            },
-            "location": {
-                "x": -1,
-                "y": -2
-            },
-            "rotation": 270
-        },
-        {
-            "playerId": "dave",
-            "tile": {
-                "img": "Base_Game_C2_Tile_N.png",
-                "edges": "CCFF"
-            },
-            "location": {
-                "x": -4,
-                "y": -2
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "eve",
-            "tile": {
-                "img": "Base_Game_C2_Tile_S.png",
-                "edges": "CCRC"
-            },
-            "location": {
-                "x": -7,
-                "y": 1
-            },
-            "rotation": 270
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_R.png",
-                "edges": "CCFC"
+                "img": "Base_Game_C2_Tile_G.png",
+                "edges": "FCFC"
             },
             "location": {
                 "x": -5,
                 "y": -1
             },
-            "rotation": 270
+            "rotation": 90
         },
         {
-            "playerId": "bob",
+            "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_X.png",
-                "edges": "RRRR"
+                "img": "Base_Game_C2_Tile_O.png",
+                "edges": "CRRC"
             },
             "location": {
                 "x": -2,
-                "y": -3
+                "y": 0
             },
             "rotation": 0
         },
         {
-            "playerId": "carol",
+            "playerId": "dave",
+            "tile": {
+                "img": "Base_Game_C2_Tile_T.png",
+                "edges": "CCRC"
+            },
+            "location": {
+                "x": -2,
+                "y": -2
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_V.png",
+                "edges": "FFRR"
+            },
+            "location": {
+                "x": -3,
+                "y": 1
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_C.png",
+                "edges": "CCCC"
+            },
+            "location": {
+                "x": 0,
+                "y": 2
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "bob",
             "tile": {
                 "img": "Base_Game_C2_Tile_I.png",
                 "edges": "CCFF"
@@ -539,34 +527,22 @@
             "rotation": 270
         },
         {
-            "playerId": "dave",
+            "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_D.png",
-                "edges": "CRFR"
+                "img": "Base_Game_C2_Tile_P.png",
+                "edges": "CRRC"
             },
             "location": {
-                "x": -3,
-                "y": 1
+                "x": -6,
+                "y": 0
             },
             "rotation": 90
         },
         {
-            "playerId": "eve",
+            "playerId": "dave",
             "tile": {
-                "img": "Base_Game_C2_Tile_L.png",
-                "edges": "CRRR"
-            },
-            "location": {
-                "x": -7,
-                "y": 2
-            },
-            "rotation": 0
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_B.png",
-                "edges": "FFFF"
+                "img": "Base_Game_C2_Tile_F.png",
+                "edges": "FCFC"
             },
             "location": {
                 "x": -6,
@@ -575,10 +551,10 @@
             "rotation": 0
         },
         {
-            "playerId": "bob",
+            "playerId": "eve",
             "tile": {
-                "img": "Base_Game_C2_Tile_A.png",
-                "edges": "FFRF"
+                "img": "Base_Game_C2_Tile_M.png",
+                "edges": "CCFF"
             },
             "location": {
                 "x": -7,
@@ -587,112 +563,136 @@
             "rotation": 180
         },
         {
-            "playerId": "carol",
+            "playerId": "alice",
             "tile": {
-                "img": "Base_Game_C2_Tile_E.png",
-                "edges": "CFFF"
+                "img": "Base_Game_C2_Tile_J.png",
+                "edges": "CRRF"
             },
             "location": {
                 "x": -4,
                 "y": 2
             },
-            "rotation": 270
+            "rotation": 90
         },
         {
-            "playerId": "dave",
+            "playerId": "bob",
             "tile": {
-                "img": "Base_Game_C2_Tile_C.png",
-                "edges": "CCCC"
+                "img": "Base_Game_C2_Tile_U.png",
+                "edges": "RFRF"
             },
             "location": {
-                "x": 1,
+                "x": -7,
                 "y": 1
             },
-            "rotation": 0
+            "rotation": 90
         },
         {
-            "playerId": "eve",
+            "playerId": "carol",
             "tile": {
-                "img": "Base_Game_C2_Tile_V.png",
-                "edges": "FFRR"
-            },
-            "location": {
-                "x": -3,
-                "y": 0
-            },
-            "rotation": 270
-        },
-        {
-            "playerId": "alice",
-            "tile": {
-                "img": "Base_Game_C2_Tile_W.png",
-                "edges": "FRRR"
+                "img": "Base_Game_C2_Tile_B.png",
+                "edges": "FFFF"
             },
             "location": {
                 "x": 2,
                 "y": 0
             },
-            "rotation": 270
-        },
-        {
-            "playerId": "bob",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
-                "edges": "CCFC"
-            },
-            "location": {
-                "x": -5,
-                "y": 3
-            },
-            "rotation": 90
-        },
-        {
-            "playerId": "carol",
-            "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_U_Garden.png",
-                "edges": "RFRF"
-            },
-            "location": {
-                "x": 0,
-                "y": 2
-            },
-            "rotation": 90
+            "rotation": 0
         },
         {
             "playerId": "dave",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
-                "edges": "CFCF"
+                "img": "Base_Game_C2_Tile_N.png",
+                "edges": "CCFF"
             },
             "location": {
-                "x": 0,
+                "x": -1,
+                "y": -3
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Base_Game_C2_Tile_R.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": 2,
+                "y": -1
+            },
+            "rotation": 0
+        },
+        {
+            "playerId": "alice",
+            "tile": {
+                "img": "Base_Game_C2_Tile_E.png",
+                "edges": "CFFF"
+            },
+            "location": {
+                "x": -3,
                 "y": -3
             },
             "rotation": 0
         },
         {
-            "playerId": "eve",
+            "playerId": "bob",
             "tile": {
                 "img": "Abbot-Base_Game_C2_Tile_V_Garden.png",
                 "edges": "FFRR"
             },
             "location": {
-                "x": 1,
-                "y": -2
+                "x": -5,
+                "y": 3
+            },
+            "rotation": 180
+        },
+        {
+            "playerId": "carol",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_R_Garden.png",
+                "edges": "CCFC"
+            },
+            "location": {
+                "x": -6,
+                "y": -1
+            },
+            "rotation": 270
+        },
+        {
+            "playerId": "dave",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_U_Garden.png",
+                "edges": "RFRF"
+            },
+            "location": {
+                "x": -7,
+                "y": 2
+            },
+            "rotation": 90
+        },
+        {
+            "playerId": "eve",
+            "tile": {
+                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
+                "edges": "CCFF"
+            },
+            "location": {
+                "x": -3,
+                "y": 2
             },
             "rotation": 180
         },
         {
             "playerId": "alice",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
-                "edges": "CFFF"
+                "img": "Abbot-Base_Game_C2_Tile_H_Garden.png",
+                "edges": "CFCF"
             },
             "location": {
-                "x": -4,
-                "y": -3
+                "x": 1,
+                "y": 2
             },
-            "rotation": 180
+            "rotation": 90
         },
         {
             "playerId": "bob",
@@ -701,20 +701,20 @@
                 "edges": "CCFF"
             },
             "location": {
-                "x": -6,
-                "y": -1
+                "x": 0,
+                "y": 3
             },
-            "rotation": 90
+            "rotation": 0
         },
         {
             "playerId": "carol",
             "tile": {
-                "img": "Abbot-Base_Game_C2_Tile_M_Garden.png",
-                "edges": "CCFF"
+                "img": "Abbot-Base_Game_C2_Tile_E_Garden.png",
+                "edges": "CFFF"
             },
             "location": {
-                "x": -7,
-                "y": 0
+                "x": -1,
+                "y": 2
             },
             "rotation": 90
         }
